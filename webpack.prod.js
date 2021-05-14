@@ -3,5 +3,13 @@ const webpack = require("webpack");
 
 module.exports = {
   mode: "production",
-  entry: "./src/client/index.js"
+  entry: "./src/client/index.js",
+  module: { 
+    rules: [ 
+      { test: '/.js$/', 
+        exclude: /node_modules/, 
+        loader: "babel-loader" 
+      } 
+    ] 
+  }
 } 

@@ -10,6 +10,8 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+app.use(express.static("dist"));  //entry point for app
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);;
 });
