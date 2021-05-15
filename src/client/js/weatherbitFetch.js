@@ -12,4 +12,7 @@ export const weatherbitFetch = async (coords) => {
     },
     body: JSON.stringify({latitude, longitude})
   });
+  let rcvWeather = await sendCity.json();
+  console.log(rcvWeather);
+  return rcvWeather;
 }

@@ -27,7 +27,7 @@ app.post("/fetchCoords", async (req,res) => {
   let city = await fetch(`http://api.geonames.org/searchJSON?q=${getCity}&maxRows=1&username=${process.env.geo_username}`);
   
   let cityJSON = await city.json();
-  console.log(cityJSON);
+  //console.log(cityJSON);
   res.send(cityJSON);
 });
 
@@ -35,6 +35,20 @@ app.post("/getWeather", async (req, res) => {
   let lat = req.body.latitude;
   let lng = req.body.longitude;
   console.log(lat + lng);
+  let currWeather = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lng}&key=${process.env.weather_API_KEY}&units=I`);
+  let weatherData = {};
+  let currWeatherJSON = await currWeather.json();
+  let newEntry = {
+    temp: currWeatherJSON.data[0].temp,
+    snow: currWeatherJSON.data[0].snow,
+    sunrise: currWeatherJSON.data[0].sunrise,
+    sunset: currWeatherJSON.data[0].sunset,
+    rain: currWeatherJSON.data[0].precip,
+    descr: currWeatherJSON.data[0].weather.description
+  }
+  weatherData = newEntry; //adds new information to the weatherData object
+  console.log(newEntry);
+  res.send(weatherData);
 })
 
 

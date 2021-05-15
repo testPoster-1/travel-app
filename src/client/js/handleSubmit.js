@@ -13,6 +13,7 @@ export const handleSubmit = (e) => {
   if (userDest) {
     getCoords(userDest)
       .then (coords => weatherbitFetch(coords))
+      .then (weather => console.log(weather))
   }
 }
 
