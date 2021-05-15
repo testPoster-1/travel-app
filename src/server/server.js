@@ -23,15 +23,12 @@ app.listen(port, () => {
 });
 
 app.post("/fetchCoords", async (req,res) => {
-  console.log(req.body);
   let getCity = req.body.destination; 
   let city = await fetch(`http://api.geonames.org/searchJSON?q=${getCity}&maxRows=1&username=${process.env.geo_username}`);
   
   let cityJSON = await city.json();
   console.log(cityJSON);
   res.send(cityJSON);
-
-
 });
 
 

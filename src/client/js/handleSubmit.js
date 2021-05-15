@@ -9,7 +9,7 @@ export const handleSubmit = (e) => {
   console.log(`name: ${userName}`);
 
   if (userDest) {
-    getCoords(userDest);
+    getCoords(userDest)
   }
 }
 
@@ -20,8 +20,8 @@ const getCoords = async (destination) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ destination }) //Notice this was sent as an object
+    body: JSON.stringify({destination}) //Notice this was sent as an object
   });
   let coords = await fetchCoords.json();
-  console.log(coords);
+  return coords;
 }
