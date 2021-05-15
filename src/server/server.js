@@ -1,6 +1,7 @@
 const path = require('path');
-const express = require("express"); 
-const cors = require("cors"); 
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express(); //start instance of express app
 const port = 2000; 

@@ -1,3 +1,4 @@
 project-notes
 node_modules
 dist
+.env

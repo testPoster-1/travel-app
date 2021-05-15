@@ -4,6 +4,16 @@
 
   </head>
   <body>
-    <p>hello</p>
+    <form id="entry-form">
+      <p id="err-holder"></p>
+      <label for="name">Please enter your name:</label>
+      <input type="text" id="name" placeholder="Name">
+      <label for="location">Please enter a location:</label>
+      <input type="text" name="location" id="destination" placeholder="Chicago, Illinois">
+      <label for="date">Please enter date you are leaving:</label>
+      <input type="date" name="date" id="leave-date" placeholder="9/19/2021">
+      <button id="submit" type="submit">Check Sentiment</button>
+    </form>
+    <div id="result-holder"></div>
   </body>
 </html>
