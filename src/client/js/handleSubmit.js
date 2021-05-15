@@ -1,3 +1,5 @@
+import {weatherbitFetch} from "./weatherbitFetch";
+
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
   let leaveDate = document.getElementById("leave-date").value;
@@ -10,6 +12,7 @@ export const handleSubmit = (e) => {
 
   if (userDest) {
     getCoords(userDest)
+      .then (coords => weatherbitFetch(coords))
   }
 }
 

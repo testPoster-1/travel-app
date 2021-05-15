@@ -31,5 +31,10 @@ app.post("/fetchCoords", async (req,res) => {
   res.send(cityJSON);
 });
 
+app.post("/getWeather", async (req, res) => {
+  let lat = req.body.latitude;
+  let lng = req.body.longitude;
+  console.log(lat + lng);
+})
 
 
