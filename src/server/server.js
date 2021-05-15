@@ -49,6 +49,17 @@ app.post("/getWeather", async (req, res) => {
   weatherData = newEntry; //adds new information to the weatherData object
   console.log(newEntry);
   res.send(weatherData);
-})
+});
+
+app.post("/postCity", async (req, res) => { //based on pixabay documentation, the GET method should be used
+  let city = encodeURI(req.body.postCity);
+  console.log("Get pics " + city);
+  
+  let pixData = await fetch (`https://pixabay.com/api/?key=${process.env.pixabay_API_KEY}&q=${city}&image_type=photo&category=places&safesearch=true&order=popular&per_page=3`, { //safesearch, popular images, only 3 images returned
+    method: "POST"
+  });
+  let pixDataJSON = await pixData.json();
+  res.send(pixDataJSON);
+});
 
 

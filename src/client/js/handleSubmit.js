@@ -1,4 +1,5 @@
 import {weatherbitFetch} from "./weatherbitFetch";
+import {PixabayImages} from "./getImages";
 
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
@@ -12,8 +13,8 @@ export const handleSubmit = (e) => {
 
   if (userDest) {
     getCoords(userDest)
-      .then (coords => weatherbitFetch(coords))
-      .then (weather => console.log(weather))
+      .then (coords => weatherbitFetch(coords));
+    PixabayImages(userDest);
   }
 }
 
