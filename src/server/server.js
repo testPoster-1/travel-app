@@ -2,6 +2,7 @@ const path = require('path');
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const fetch = require("node-fetch");
 
 const app = express(); //start instance of express app
 const port = 2000; 
@@ -21,6 +22,17 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);;
 });
 
+app.post("/fetchCoords", async (req,res) => {
+  console.log(req.body);
+  let getCity = req.body.destination; 
+  let city = await fetch(`http://api.geonames.org/searchJSON?q=${getCity}&maxRows=1&username=${process.env.geo_username}`);
+  
+  let cityJSON = await city.json();
+  console.log(cityJSON);
+  res.send(cityJSON);
+
+
+});
 
 
 
