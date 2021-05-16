@@ -1,4 +1,4 @@
-import { timeDifference } from "../src/client/js/getTime";
+import { timeDifference } from "../src/client/js/InputTesting/dateValidation";
 
   let u = new Date();
   let testDay = u.getDate();
