@@ -20,7 +20,7 @@ export const handleSubmit = (e) => {
   console.log(`name: ${userName}`);
 
   let interval = timeDifference(userDate);
-  nameValidation(userName);
+  let name = nameValidation(userName);
   destValidation(userDest);
 
   if (userDest && userName && interval) {

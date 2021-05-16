@@ -11,13 +11,13 @@ export const timeDifference = (userDate) => {
     if (timeDiff > 518400000) { //milliseconds - cut off is 6 days
       console.log("longer than 6 days aways");
       return 2;
-    } else if (timeDiff < 0) {
+    } else if (timeDiff >= 0 && timeDiff <= 518400000) {
+      console.log ("Leaving in 6 days or less");
+      return 1
+    } else {
       console.log("Input date is in the past"); //Will be true if user inputs date in the past 
       return false;
-    } else {
-      console.log("Leaving today!"); //Will be true if input date is today
-      return 1;
-    }
+    } 
   } else {
     console.log("No date - please enter a date");
     return false;

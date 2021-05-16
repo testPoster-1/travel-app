@@ -56,11 +56,12 @@ app.post("/fetchData", async (req, res) => {
       console.log("error", error);
     }
 
+    if (interval == 1) {
     try {
     let weatherURL = `https://api.weatherbit.io/v2.0/current?lat=${fetchedData.lat}&lon=${fetchedData.lng}&key=${weatherKEY}&units=I`;
     let weatherData = await fetch (weatherURL);
     let weatherDataJSON = await weatherData.json();
-    //console.log(JSON.stringify(weatherDataJSON));
+    console.log(`less than 1 week: ${JSON.stringify(weatherDataJSON)}`);
 
     let newWeatherEntry = {
       sunrise: weatherDataJSON.data[0].sunrise,
@@ -76,6 +77,28 @@ app.post("/fetchData", async (req, res) => {
   } catch (error) {
     console.log("error", error);
   }
+} else {
+  try {  
+    let weatherURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${fetchedData.lat}&lon=${fetchedData.lng}&key=${weatherKEY}&units=I`;
+    let weatherData = await fetch (weatherURL);
+    let weatherDataJSON = await weatherData.json();
+    console.log(`more than 1 week: ${JSON.stringify(weatherDataJSON)}`);
+
+    // let newWeatherEntry = {
+    //   sunrise: weatherDataJSON.data[0].sunrise,
+    //   sunset: weatherDataJSON.data[0].sunset,
+    //   snow: weatherDataJSON.data[0].snow,
+    //   rain: weatherDataJSON.data[0].precip,
+    //   general: weatherDataJSON.data[0].weather.description,
+    //   temp: weatherDataJSON.data[0].temp      
+    // }
+
+    // fetchedData = {...fetchedData, ...newWeatherEntry};
+  
+  } catch (error) {
+    console.log("error", error);
+  }
+}
 
   try {
     let pixabayURL = `https://pixabay.com/api/?key=${pixabayKEY}&q=${fetchedData.city}&image_type=photo&category=places&safesearch=true&order=popular&per_page=3`;
