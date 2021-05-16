@@ -1,7 +1,9 @@
 import { weatherbitFetch } from "./weatherbitFetch";
 import { updateUI } from "./updateUI";
-import { timeDifference } from "./getTime";
+import { timeDifference } from "./InputTesting/dateValidation";
 import { PixabayImages } from "./getImages";
+import { nameValidation } from "./InputTesting/nameValidation";
+import { destValidation } from "./InputTesting/destValidation";
 
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
@@ -17,7 +19,9 @@ export const handleSubmit = (e) => {
   console.log(`Leave Date: ${userDate}`);
   console.log(`name: ${userName}`);
 
-  let dateInterval = timeDifference(userDate);
+  timeDifference(userDate);
+  nameValidation(userName);
+  destValidation(userDest);
 
   if (userDest) {
     

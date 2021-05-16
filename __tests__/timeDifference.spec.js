@@ -2,6 +2,7 @@ import { timeDifference } from "../src/client/js/getTime";
 
   let u = new Date();
   let testDay = u.getDate();
+  let a = "";
 
 describe("Testing timeDifference function", () => {
   test("Calculate difference between dates", () => {
