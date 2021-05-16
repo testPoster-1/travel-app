@@ -37,13 +37,15 @@ app.post("/fetchData", async (req, res) => {
     //console.log(JSON.stringify(geoData));
     let geoDataJSON = await geoData.json();
     //console.log(JSON.stringify(geoDataJSON));
+    console.log(geoDataJSON);
 
     let newGeoData = {
       countryCode: geoDataJSON.geonames[0].countryCode,
       countryName: geoDataJSON.geonames[0].countryName,
       city: geoDataJSON.geonames[0].name,
       lat: geoDataJSON.geonames[0].lat,
-      lng: geoDataJSON.geonames[0].lng
+      lng: geoDataJSON.geonames[0].lng, 
+      state: geoDataJSON.geonames[0].adminName1 //Will also provide international locations
     }
     fetchedData = {...fetchedData, ...newGeoData}; //using spread method to add the key value pairs to the fetchedData object
     //console.log(fetchedGeoData);
