@@ -2,7 +2,6 @@ const path = require('path');
 const express = require("express");
 const cors = require("cors");
 const fetch = require("node-fetch");
-const { weatherbitFetch } = require('../client/js/weatherbitFetch');
 
 require("dotenv").config();
 const geoUsername = process.env.geo_username;
@@ -46,7 +45,7 @@ app.post("/fetchData", async (req, res) => {
       lat: geoDataJSON.geonames[0].lat,
       lng: geoDataJSON.geonames[0].lng
     }
-    fetchedData = {...fetchedData, ...newGeoData};
+    fetchedData = {...fetchedData, ...newGeoData}; //using spread method to add the key value pairs to the fetchedData object
     //console.log(fetchedGeoData);
 //    res.send(geoDataJSON);
     } catch (error) {

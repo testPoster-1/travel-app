@@ -1,5 +1,6 @@
-import {weatherbitFetch} from "./weatherbitFetch";
-import {PixabayImages} from "./getImages";
+import { weatherbitFetch } from "./weatherbitFetch";
+import { updateUI } from "./updateUI";
+import { PixabayImages } from "./getImages";
 
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
@@ -14,33 +15,20 @@ export const handleSubmit = (e) => {
   if (userDest) {
     postData(userDest)
       //.then (coords => weatherbitFetch(coords));
-      .then (PixabayImages());
+      .then(dataObj => updateUI(dataObj));
   }
 }
 
 const postData = async (destination) => {
   let getData = await fetch("http://localhost:2000/fetchData", {//local server is on port 2000. See POST on server.js with fetchCoords as path
-     method: "POST",
-     credentials: "same-origin",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify({destination}) //Notice this was sent as an object
-   });
-   let newOne = await getData.json();
-   console.log(newOne);
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ destination }) //Notice this was sent as an object
+  });
+  let dataObj = await getData.json();
+  console.log(dataObj);
+  return dataObj;
 }
-
-
-// const getCoords = async (destination) => {
-//   let fetchCoords = await fetch("http://localhost:2000/fetchCoords", {//local server is on port 2000. See POST on server.js with fetchCoords as path
-//     method: "POST",
-//     credentials: "same-origin",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({destination}) //Notice this was sent as an object
-//   });
-//   let coords = await fetchCoords.json();
-//   return coords;
-// }
