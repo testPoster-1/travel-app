@@ -12,21 +12,35 @@ export const handleSubmit = (e) => {
   console.log(`name: ${userName}`);
 
   if (userDest) {
-    getCoords(userDest)
-      .then (coords => weatherbitFetch(coords));
-    PixabayImages(userDest);
+    postData(userDest)
+      //.then (coords => weatherbitFetch(coords));
+      .then (PixabayImages());
   }
 }
 
-const getCoords = async (destination) => {
-  let fetchCoords = await fetch("http://localhost:2000/fetchCoords", {//local server is on port 2000. See POST on server.js with fetchCoords as path
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({destination}) //Notice this was sent as an object
-  });
-  let coords = await fetchCoords.json();
-  return coords;
+const postData = async (destination) => {
+  let getData = await fetch("http://localhost:2000/fetchData", {//local server is on port 2000. See POST on server.js with fetchCoords as path
+     method: "POST",
+     credentials: "same-origin",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify({destination}) //Notice this was sent as an object
+   });
+   let newOne = await getData.json();
+   console.log(newOne);
 }
+
+
+// const getCoords = async (destination) => {
+//   let fetchCoords = await fetch("http://localhost:2000/fetchCoords", {//local server is on port 2000. See POST on server.js with fetchCoords as path
+//     method: "POST",
+//     credentials: "same-origin",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({destination}) //Notice this was sent as an object
+//   });
+//   let coords = await fetchCoords.json();
+//   return coords;
+// }
