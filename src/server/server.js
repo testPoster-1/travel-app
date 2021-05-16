@@ -30,6 +30,7 @@ app.listen(port, () => {
 
 app.post("/fetchData", async (req, res) => {
   let city = req.body.destination; //gets the destination city from the user.
+  let interval = req.body.interval;
   const geoURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${geoUsername}`; //obtained from the Geo API documentation
 
   try {
@@ -38,6 +39,7 @@ app.post("/fetchData", async (req, res) => {
     let geoDataJSON = await geoData.json();
     //console.log(JSON.stringify(geoDataJSON));
     console.log(geoDataJSON);
+    console.log(interval);
 
     let newGeoData = {
       countryCode: geoDataJSON.geonames[0].countryCode,

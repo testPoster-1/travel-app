@@ -19,26 +19,26 @@ export const handleSubmit = (e) => {
   console.log(`Leave Date: ${userDate}`);
   console.log(`name: ${userName}`);
 
-  timeDifference(userDate);
+  let interval = timeDifference(userDate);
   nameValidation(userName);
   destValidation(userDest);
 
-  if (userDest) {
+  if (userDest && userName && interval) {
     
-    postData(userDest)
+    postData(userDest, interval)
       //.then (coords => weatherbitFetch(coords));
       .then(dataObj => updateUI(dataObj));
   }
 }
 
-const postData = async (destination) => {
+const postData = async (destination, interval) => {
   let getData = await fetch("http://localhost:2000/fetchData", {//local server is on port 2000. See POST on server.js with fetchCoords as path
     method: "POST",
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ destination }) //Notice this was sent as an object
+    body: JSON.stringify({ destination, interval }) //Notice this was sent as an object
   });
   let dataObj = await getData.json();
   console.log(dataObj);
