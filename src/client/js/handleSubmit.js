@@ -5,7 +5,7 @@ import { PixabayImages } from "./getImages";
 
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
-  let leaveDate = document.getElementById("leave-date").value;
+  let userDate = document.getElementById("leave-date").value;
   let userName = document.getElementById("name").value;
   let userDest = document.getElementById("destination").value;
   
@@ -18,7 +18,7 @@ export const handleSubmit = (e) => {
   console.log(`name: ${userName}`);
 
   if (userDest) {
-    timeDifference();
+    timeDifference(userDate);
     postData(userDest)
       //.then (coords => weatherbitFetch(coords));
       .then(dataObj => updateUI(dataObj));
