@@ -1,5 +1,6 @@
 import { weatherbitFetch } from "./weatherbitFetch";
 import { updateUI } from "./updateUI";
+import { timeDifference } from "./getTime";
 import { PixabayImages } from "./getImages";
 
 export const handleSubmit = (e) => {
@@ -7,12 +8,17 @@ export const handleSubmit = (e) => {
   let leaveDate = document.getElementById("leave-date").value;
   let userName = document.getElementById("name").value;
   let userDest = document.getElementById("destination").value;
+  
+
+
+
   console.log("User clicked submit");
   console.log(`location: ${userDest}`);
-  console.log(`date: ${leaveDate}`);
+  console.log(`Leave Date: ${leaveDate}`);
   console.log(`name: ${userName}`);
 
   if (userDest) {
+    timeDifference();
     postData(userDest)
       //.then (coords => weatherbitFetch(coords));
       .then(dataObj => updateUI(dataObj));
