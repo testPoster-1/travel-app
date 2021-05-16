@@ -11,10 +11,10 @@ export const timeDifference = (user) => {
     console.log("longer than 6 days aways");
     return 1;
   } else if (timeDiff < 0) {
-    console.log("Input date is in the past");
+    console.log("Input date is in the past"); //Will be true if user inputs date in the past 
     return -1; 
   } else {
-    console.log("Date is 6 days or less away");
+    console.log("Date is 6 days or less away"); //Will be true if input date is today
     return 0;
   }
 }
