@@ -84,16 +84,11 @@ app.post("/fetchData", async (req, res) => {
     let weatherDataJSON = await weatherData.json();
     console.log(`more than 1 week: ${JSON.stringify(weatherDataJSON)}`);
 
-    // let newWeatherEntry = {
-    //   sunrise: weatherDataJSON.data[0].sunrise,
-    //   sunset: weatherDataJSON.data[0].sunset,
-    //   snow: weatherDataJSON.data[0].snow,
-    //   rain: weatherDataJSON.data[0].precip,
-    //   general: weatherDataJSON.data[0].weather.description,
-    //   temp: weatherDataJSON.data[0].temp      
-    // }
+    let newWeatherEntry = {
+      data: weatherDataJSON.data    
+    }
 
-    // fetchedData = {...fetchedData, ...newWeatherEntry};
+    fetchedData = {...fetchedData, ...newWeatherEntry};
   
   } catch (error) {
     console.log("error", error);
