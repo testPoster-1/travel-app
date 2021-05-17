@@ -1,2 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=KoHo&family=Niramit&display=swap");
 body {
+  height: 100vh;
+  background: linear-gradient(135deg, orange, 65%, cyan); }
+
+h2,
+button {
+  font-family: "KoHo", sans-serif;
+  margin: 10px 0 0 0; }
+
+p,
+input,
+label {
+  font-family: "Niramit", sans-serif;
+  margin: 0; }
+
+#subheader {
+  margin-bottom: 15px; }
+
+#container {
+  display: grid;
+  grid-template-columns: 80vw;
+  grid-template-rows: 90vh 5vh;
+  grid-template-areas: "form" "ftr";
+  justify-content: center;
+  border-radius: 25px; }
+
+.user-input {
+  font-size: 0.8em;
+  color: #fff;
+  margin: 0 10px 30px;
+  border-bottom: 1px solid #fff;
+  width: 80%;
+  margin: 0 0 15px 20px; }
+
+.user-input label {
+  color: #636161; }
+
+.user-input input {
+  font-size: 0.9em; }
+
+.user-input #state {
+  color: #636161;
+  margin: -4px;
+  font-family: "Niramit", sans-serif; }
+
+.no-focus {
+  background: transparent;
+  border: none;
+  color: #fff; }
+
+.no-focus:focus {
+  /*removing the border when the input areas are in focus*/
+  outline: none; }
+
+#header {
+  text-align: center; }
+
+#userUI {
+  grid-area: form;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 100%;
+  grid-template-areas: "output input";
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 0 15px -2px #444444; }
+
+#entry-form {
+  grid-area: input;
+  justify-content: center; }
+
+#output {
+  grid-area: output;
   background: black; }
+
+button {
+  margin-left: 20vw;
+  border: none;
+  border-radius: 5px;
+  color: #636161;
+  font-size: 1em;
+  background-color: transparent; }
+
+button:hover {
+  border: 2px solid #636161; }
+
+button:active {
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white; }

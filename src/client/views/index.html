@@ -6,79 +6,102 @@
 </head>
 
 <body>
-  <form id="entry-form">
+  <div id="container">
+    
+    <div id="userUI">
     <p id="err-holder"></p>
-    <label for="name">Please enter your name:</label>
-    <input type="text" id="name" placeholder="Name" value = "Angela">  <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
-    <label for="city">Please enter a destination:</label>
-    <input type="text" name="location" id="destination" placeholder="Ex. Chicago" value = "Chicago"> <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
-    <label for="date">Please enter date you are leaving:</label>
-    <input type="date" name="date" id="leave-date">
-    <label for="state"></label>
-    <select name="state" id="state">
-      <option value="">Other</option>
-      <option value="Alabama">Alabama</option>
-      <option value="Alaska">Alaska</option>
-      <option value="Arizona">Arizona</option>
-      <option value="Arkansas">Arkansas</option>
-      <option value="California">California</option>
-      <option value="Colorado">Colorado</option>
-      <option value="Connecticu">Connecticut</option>
-      <option value="Delaware">Delaware</option>
-      <option value="4140963">District Of Columbia</option>
-      <option value="Florida">Florida</option>
-      <option value="Georgia">Georgia</option>
-      <option value="Hawaii">Hawaii</option>
-      <option value="Idaho">Idaho</option>
-      <option value="Illinois">Illinois</option>
-      <option value="Indiana">Indiana</option>
-      <option value="Iowa">Iowa</option>
-      <option value="Kansas">Kansas</option>
-      <option value="Kentucky">Kentucky</option>
-      <option value="Louisiana">Louisiana</option>
-      <option value="Maine">Maine</option>
-      <option value="Maryland">Maryland</option>
-      <option value="Massachusetts">Massachusetts</option>
-      <option value="Michigan">Michigan</option>
-      <option value="Minnesota">Minnesota</option>
-      <option value="Mississippi">Mississippi</option>
-      <option value="Missouri">Missouri</option>
-      <option value="Montana">Montana</option>
-      <option value="Nebraska">Nebraska</option>
-      <option value="Nevada">Nevada</option>
-      <option value="NewHampshire">New Hampshire</option>
-      <option value="NewJersey">New Jersey</option>
-      <option value="NewMexico">New Mexico</option>
-      <option value="NewYork">New York</option>
-      <option value="NorthCarolina">North Carolina</option>
-      <option value="NorthDakota">North Dakota</option>
-      <option value="Ohio">Ohio</option>
-      <option value="Oklahoma">Oklahoma</option>
-      <option value="Oregon">Oregon</option>
-      <option value="Pennsylvania">Pennsylvania</option>
-      <option value="RhodeIsland">Rhode Island</option>
-      <option value="SouthCarolina">South Carolina</option>
-      <option value="SouthDakota">South Dakota</option>
-      <option value="Tennessee">Tennessee</option>
-      <option value="Texas">Texas</option>
-      <option value="Utah">Utah</option>
-      <option value="Vermont">Vermont</option>
-      <option value="Virginia">Virginia</option>
-      <option value="Washington">Washington</option>
-      <option value="WestVirginia">West Virginia</option>
-      <option value="Wisconsin">Wisconsin</option>
-      <option value="Wyoming">Wyoming</option>
-      <option value="5880801">American Samoa</option>
-      <option value="Guam">Guam</option>
-      <option value="NorthernMarianaIslands">Northern Mariana Islands</option>
-      <option value="PuertoRico">Puerto Rico</option>
-      <option value="UnitedStatesMinorOutlyingIslands">United States Minor Outlying Islands</option>
-      <option value="VirginIslands">Virgin Islands</option>
-    </select>
-    <label for="country">Please enter destination country:</label>
-    <input type="text" name="country" id="country" placeholder="Ex. France">
-    <button id="submit" type="submit">Check Sentiment</button>
-  </form>
+    <div id="output"></div>
+    <form id="entry-form">
+      <header id="header">
+        <h2>Travel App</h2>
+        <p id="subheader">Bon Voyage</p>
+      </header>
+      <div class="user-input"> 
+      <label for="name">Please enter your name:</label>
+      <input class="no-focus" type="text" id="name">
+      <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
+    </div>
+    <div class="user-input">
+      <label for="city">Please enter a destination city:</label>
+      <input class="no-focus" type="text" name="location" id="destination">
+      <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
+    </div>
+    <div class="user-input">
+      <label for="date">Please enter date you are leaving:</label>
+      <input class="no-focus" type="date" name="date" id="leave-date">
+    </div>
+    <div class="user-input">
+      <label for="state"></label>
+      <select class="no-focus" name="state" id="state">
+        <option value="">Please select a state</option>
+        <option value="">Other</option>
+        <option value="Alabama">Alabama</option>
+        <option value="Alaska">Alaska</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Arkansas">Arkansas</option>
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+        <option value="Connecticu">Connecticut</option>
+        <option value="Delaware">Delaware</option>
+        <option value="4140963">District Of Columbia</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <option value="Indiana">Indiana</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+        <option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option>
+        <option value="Maine">Maine</option>
+        <option value="Maryland">Maryland</option>
+        <option value="Massachusetts">Massachusetts</option>
+        <option value="Michigan">Michigan</option>
+        <option value="Minnesota">Minnesota</option>
+        <option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option>
+        <option value="Montana">Montana</option>
+        <option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option>
+        <option value="NewHampshire">New Hampshire</option>
+        <option value="NewJersey">New Jersey</option>
+        <option value="NewMexico">New Mexico</option>
+        <option value="NewYork">New York</option>
+        <option value="NorthCarolina">North Carolina</option>
+        <option value="NorthDakota">North Dakota</option>
+        <option value="Ohio">Ohio</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Oregon">Oregon</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="RhodeIsland">Rhode Island</option>
+        <option value="SouthCarolina">South Carolina</option>
+        <option value="SouthDakota">South Dakota</option>
+        <option value="Tennessee">Tennessee</option>
+        <option value="Texas">Texas</option>
+        <option value="Utah">Utah</option>
+        <option value="Vermont">Vermont</option>
+        <option value="Virginia">Virginia</option>
+        <option value="Washington">Washington</option>
+        <option value="WestVirginia">West Virginia</option>
+        <option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+        <option value="5880801">American Samoa</option>
+        <option value="Guam">Guam</option>
+        <option value="NorthernMarianaIslands">Northern Mariana Islands</option>
+        <option value="PuertoRico">Puerto Rico</option>
+        <option value="UnitedStatesMinorOutlyingIslands">United States Minor Outlying Islands</option>
+        <option value="VirginIslands">Virgin Islands</option>
+      </select>
+    </div>
+    <div class="user-input">
+      <label for="country">Please enter destination country:</label>
+      <input class="no-focus" type="text" name="country" id="country">
+      </div>
+      <button id="submit" type="submit">Get Weather</button>
+    </form>
+  </div>  <!--End userUI div -->
+  </div> <!--End main container div -->
   <div id="result-holder"></div>
 </body>
 
