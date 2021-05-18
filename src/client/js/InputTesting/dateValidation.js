@@ -16,10 +16,12 @@ export const timeDifference = (userDate) => {
       return 1
     } else {
       console.log("Input date is in the past"); //Will be true if user inputs date in the past 
+      document.getElementById("err-holder").innerHTML = "You entered a date that has already passed. Please enter a date that is no earlier than today."
       return false;
     } 
   } else {
     console.log("No date - please enter a date");
+    document.getElementById("err-holder").innerHTML = "Please enter the date of when you are leaving."
     return false;
   }
 }

@@ -19,7 +19,8 @@ button {
 
 p,
 input,
-label {
+label, 
+h4 {
   font-family: $Niramit;
   margin: 0;
 }
@@ -28,6 +29,13 @@ label {
   margin-bottom: 15px;
 }
 
+#err-holder {
+  text-align: center;
+  margin-top: 20vh;
+  width: 50vw;
+  border: 1px red solid;
+  padding: 0;
+}
 
 // -----------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------
@@ -74,6 +82,7 @@ label {
 
 #header {
   text-align: $centerTxt;
+  color: $white;
 }
 
 #userUI {
@@ -90,11 +99,12 @@ label {
 #entry-form {
   grid-area: input;
   justify-content: center;
+  background: black;
 }
 
 #output {
   grid-area: output;
-  background: black;
+  background-color: transparent;
 }
 
 button {

@@ -9,10 +9,15 @@ export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
   let userDate = document.getElementById("leave-date").value;
   let userName = document.getElementById("name").value;
-  let userCity = document.getElementById("destination").value;
+  let userCity = document.getElementById("city").value;
   let userState = document.getElementById("state").value;
   let userCountry = document.getElementById("country").value;
-  let userDest = (`${userCity},${userState},${userCountry}`);
+  //let userDest = (`${userCity},${userState},${userCountry}`);
+  let userDest = {
+    userCity: userCity, 
+    userState: userState,
+    userCountry: userCountry,
+  }
   
   console.log("User clicked submit");
   console.log(`location: ${userDest}`);
@@ -21,9 +26,9 @@ export const handleSubmit = (e) => {
 
   let interval = timeDifference(userDate);
   let name = nameValidation(userName);
-  destValidation(userDest);
+  let destination = destValidation(userDest);
 
-  if (userDest && userName && interval) {
+  if (destination && name && interval) {
     
     postData(userDest, interval)
       //.then (coords => weatherbitFetch(coords));

@@ -14,12 +14,20 @@ button {
 
 p,
 input,
-label {
+label,
+h4 {
   font-family: "Niramit", sans-serif;
   margin: 0; }
 
 #subheader {
   margin-bottom: 15px; }
+
+#err-holder {
+  text-align: center;
+  margin-top: 20vh;
+  width: 50vw;
+  border: 1px red solid;
+  padding: 0; }
 
 #container {
   display: grid;
@@ -58,7 +66,8 @@ label {
   outline: none; }
 
 #header {
-  text-align: center; }
+  text-align: center;
+  color: #fff; }
 
 #userUI {
   grid-area: form;
@@ -72,11 +81,12 @@ label {
 
 #entry-form {
   grid-area: input;
-  justify-content: center; }
+  justify-content: center;
+  background: black; }
 
 #output {
   grid-area: output;
-  background: black; }
+  background-color: transparent; }
 
 button {
   margin-left: 20vw;
