@@ -42,12 +42,12 @@ app.post("/fetchData", async (req, res) => {
     console.log(interval);
 
     let newGeoData = {
-      countryCode: geoDataJSON.geonames[0].countryCode,
+      state: geoDataJSON.geonames[0].adminName1, //Will also provide international locations
       countryName: geoDataJSON.geonames[0].countryName,
+      countryCode: geoDataJSON.geonames[0].countryCode,
       city: geoDataJSON.geonames[0].name,
       lat: geoDataJSON.geonames[0].lat,
-      lng: geoDataJSON.geonames[0].lng, 
-      state: geoDataJSON.geonames[0].adminName1 //Will also provide international locations
+      lng: geoDataJSON.geonames[0].lng
     }
     fetchedData = {...fetchedData, ...newGeoData}; //using spread method to add the key value pairs to the fetchedData object
     //console.log(fetchedGeoData);
@@ -96,21 +96,36 @@ app.post("/fetchData", async (req, res) => {
 }
 
   try {
-    let pixabayURL = `https://pixabay.com/api/?key=${pixabayKEY}&q=${fetchedData.city}&image_type=photo&category=places&safesearch=true&order=popular&per_page=3`;
+    let pixabayURL = `https://pixabay.com/api/?key=${pixabayKEY}&q=${fetchedData.city}&image_type=photo&safesearch=true&order=popular&per_page=3`;
     let imageData = await fetch(pixabayURL);
     let pixabayJSON = await imageData.json();
-   // console.log(JSON.stringify(pixabayJSON));
+    console.log(JSON.stringify(pixabayJSON));
+    console.log(imageData);
 
-    let newImgData = {
+    if (pixabayJSON.total == 0) {
+      pixabayURL = `https://pixabay.com/api/?key=${pixabayKEY}&q=${fetchedData.state}&image_type=photo&safesearch=true&order=popular&per_page=3`;
+      imageData = await fetch(pixabayURL);
+      pixabayJSON = await imageData.json();
+      if (pixabayJSON.total == 0) {
+        newImgData = {
+          pixURL: "https://pixabay.com/get/g89443414a69d46417da3a6c9ae86ff7510ce19ef61a221c234cc009714e2ce78a755376fbd526bab6a0d927c66184f0a1a5e2e72b9263e31924c280ccf62a3b4_640.jpg"
+        }
+      }
+    } else {    
+    newImgData = {
       pixURL: pixabayJSON.hits[0].webformatURL
     }
+  }
+  newImgData = {
+    pixURL: pixabayJSON.hits[0].webformatURL
+  }
 
     fetchedData = {...fetchedData, ...newImgData};
     console.log(`Special fetched data ${JSON.stringify(fetchedData)}`);
   } catch (error) {
     console.log("error", error);
   }
-
+  console.log(`this is the data I will send: ${fetchedData}`);
   res.send(fetchedData);
 });
 

@@ -41,6 +41,6 @@ const postData = async (destination, interval) => {
     body: JSON.stringify({ destination, interval }) //Notice this was sent as an object
   });
   let dataObj = await getData.json();
-  console.log(dataObj);
+  console.log(`This is my object I am returning: ${JSON.stringify(dataObj)}`);
   return dataObj;
 }
