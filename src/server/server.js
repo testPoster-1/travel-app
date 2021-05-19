@@ -29,7 +29,7 @@ app.listen(port, () => {
 });
 
 app.post("/fetchData", async (req, res) => {
-  let city = req.body.userCity; //gets the destination city from the user.
+  let city = req.body.userDest; //gets the destination city from the user.
   let interval = req.body.interval;
   console.log("this is my city " + city);
   const geoURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${geoUsername}`; //obtained from the Geo API documentation
