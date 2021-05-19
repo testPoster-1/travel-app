@@ -32,7 +32,7 @@ h4 {
 #err-holder {
   text-align: center;
   width: 45vw;
-  margin: 20vh auto;
+  margin: 5vh auto;
 }
 
 // -----------------------------------------------------------------------------------
@@ -102,8 +102,25 @@ h4 {
 
 #output {
   grid-area: output;
+  display: grid;
+  grid-template-columns: 90%;
+  grid-template-rows: 30% 70%;
+  grid-template-areas: 
+  "img"
+  "weather";
   background-color: transparent;
   justify-content: center;
+}
+
+#img-holder {
+  grid-area: img;
+  
+  border: 10px red solid;
+}
+
+#result-holder {
+  grid-area: weather;
+  border: 1px solid black;
 }
 
 button {
