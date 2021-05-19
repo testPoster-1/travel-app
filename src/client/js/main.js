@@ -26,9 +26,10 @@ export const handleSubmit = (e) => {
 
   let interval = timeDifference(userDate);
   let name = nameValidation(userName);
-  let destination = destValidation(userDest);
+  let destination = destValidation(userCity);
    
   if (name && interval && destination) {
+    console.log("all is true")
     postData(userCity, interval)
       //.then (coords => weatherbitFetch(coords));
       .then(dataObj => updateUI(dataObj));
@@ -42,7 +43,7 @@ const postData = async (userCity, interval) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({userCity,interval}) //Notice this was sent as an object
+    body: JSON.stringify({userCity, interval}) //Notice this was sent as an object
   });
   let dataObj = await getData.json();
   console.log(`This is my object I am returning: ${JSON.stringify(dataObj)}`);
