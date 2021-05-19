@@ -29,8 +29,9 @@ app.listen(port, () => {
 });
 
 app.post("/fetchData", async (req, res) => {
-  let city = req.body.destination; //gets the destination city from the user.
+  let city = req.body.userCity; //gets the destination city from the user.
   let interval = req.body.interval;
+  console.log("this is my city " + city);
   const geoURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${geoUsername}`; //obtained from the Geo API documentation
 
   try {
@@ -38,8 +39,6 @@ app.post("/fetchData", async (req, res) => {
     //console.log(JSON.stringify(geoData));
     let geoDataJSON = await geoData.json();
     //console.log(JSON.stringify(geoDataJSON));
-    console.log(geoDataJSON);
-    console.log(interval);
 
     let newGeoData = {
       state: geoDataJSON.geonames[0].adminName1, //Will also provide international locations
@@ -61,7 +60,6 @@ app.post("/fetchData", async (req, res) => {
     let weatherURL = `https://api.weatherbit.io/v2.0/current?lat=${fetchedData.lat}&lon=${fetchedData.lng}&key=${weatherKEY}&units=I`;
     let weatherData = await fetch (weatherURL);
     let weatherDataJSON = await weatherData.json();
-    console.log(`less than 1 week: ${JSON.stringify(weatherDataJSON)}`);
 
     let newWeatherEntry = {
       sunrise: weatherDataJSON.data[0].sunrise,
@@ -99,8 +97,6 @@ app.post("/fetchData", async (req, res) => {
     let pixabayURL = `https://pixabay.com/api/?key=${pixabayKEY}&q=${fetchedData.city}&image_type=photo&safesearch=true&order=popular&per_page=3`;
     let imageData = await fetch(pixabayURL);
     let pixabayJSON = await imageData.json();
-    console.log(JSON.stringify(pixabayJSON));
-    console.log(imageData);
 
     if (pixabayJSON.total == 0) {
       pixabayURL = `https://pixabay.com/api/?key=${pixabayKEY}&q=${fetchedData.countryName}&image_type=photo&safesearch=true&category=places&order=popular&per_page=3`;

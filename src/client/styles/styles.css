@@ -24,10 +24,8 @@ h4 {
 
 #err-holder {
   text-align: center;
-  margin-top: 20vh;
-  width: 50vw;
-  border: 1px red solid;
-  padding: 0; }
+  width: 45vw;
+  margin: 20vh auto; }
 
 #container {
   display: grid;
@@ -86,7 +84,8 @@ h4 {
 
 #output {
   grid-area: output;
-  background-color: transparent; }
+  background-color: transparent;
+  justify-content: center; }
 
 button {
   margin-left: 20vw;
