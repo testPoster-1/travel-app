@@ -6,15 +6,19 @@ import { nameValidation } from "./InputTesting/nameValidation";
 import { destValidation } from "./InputTesting/destValidation";
 
 export const handleSubmit = (e) => {
-  let preLoader = document.getElementById("pre-loader-holder");
+  let preLoader = document.getElementById("pre-loader-holder"); //play the loading animation
   preLoader.classList.add("pre-loader");
   let loadCounter = 4;
 
-  if (loadCounter != 0) {
-    loadCounter--;
-  } else {
-    preLoader.classList.remove("pre-loader");
-  }console.log(loadCounter);
+  let loadTimer = setInterval(function(){ //create a setinterval function as a countdown. When countdown reaches 0, the loading animation will be removed. This will coincide with the user info appearing in the UI. 
+    if(loadCounter <= 0){
+      clearInterval(loadTimer);
+      preLoader.classList.remove("pre-loader");
+    } else {
+      loadCounter -= 1;
+    }
+  }, 500);
+  
 
   e.preventDefault(); //prevent page from reloading on click  
   document.getElementById("err-holder").innerHTML = "";
