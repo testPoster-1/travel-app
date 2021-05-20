@@ -4,30 +4,27 @@
   position: absolute;
   top: 25%;
   left: 25%; }
-
-.pre-loader #text {
-  color: white;
-  display: inline-block;
-  margin-left: 5px;
-  font-family: Montserrat; }
-
-.pre-loader .bounceball {
-  position: relative;
-  display: inline-block;
-  height: 37px;
-  width: 15px; }
-
-.pre-loader .bounceball:before {
-  position: absolute;
-  content: '';
-  display: block;
-  top: 0;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: white;
-  transform-origin: 50%;
-  animation: bounce 500ms alternate infinite ease; }
+  .pre-loader #text {
+    color: white;
+    display: inline-block;
+    margin-left: 5px;
+    font-family: Montserrat; }
+  .pre-loader .bounceball {
+    position: relative;
+    display: inline-block;
+    height: 37px;
+    width: 15px; }
+    .pre-loader .bounceball:before {
+      position: absolute;
+      content: '';
+      display: block;
+      top: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: white;
+      transform-origin: 50%;
+      animation: bounce 500ms alternate infinite ease; }
 
 @keyframes bounce {
   0% {
@@ -81,26 +78,22 @@ h4 {
   border-bottom: 1px solid #fff;
   width: 80%;
   margin: 0 0 15px 20px; }
-
-.user-input label {
-  color: #636161; }
-
-.user-input input {
-  font-size: 0.9em; }
-
-.user-input #state {
-  color: #636161;
-  margin: -4px;
-  font-family: "Niramit", sans-serif; }
+  .user-input label {
+    color: #636161; }
+  .user-input input {
+    font-size: 0.9em; }
+  .user-input #state {
+    color: #636161;
+    margin: -4px;
+    font-family: "Niramit", sans-serif; }
 
 .no-focus {
   background: transparent;
   border: none;
   color: #fff; }
-
-.no-focus:focus {
-  /*removing the border when the input areas are in focus*/
-  outline: none; }
+  .no-focus:focus {
+    /*removing the border when the input areas are in focus*/
+    outline: none; }
 
 #header {
   text-align: center;
@@ -145,11 +138,9 @@ button {
   color: #636161;
   font-size: 1em;
   background-color: transparent; }
-
-button:hover {
-  border: 2px solid #636161; }
-
-button:active {
-  border: 2px solid white;
-  border-radius: 5px;
-  color: white; }
+  button:hover {
+    border: 2px solid #636161; }
+  button:active {
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white; }
