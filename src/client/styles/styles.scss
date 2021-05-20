@@ -17,6 +17,10 @@ button {
   margin: 10px 0 0 0;
 }
 
+.center-text {
+  text-align: $centerTxt;
+}
+
 p,
 input,
 label, 
@@ -40,14 +44,50 @@ h4 {
 
 #container {
   display: grid;
-  grid-template-columns: 80vw;
-  grid-template-rows: 90vh 5vh;
+  grid-template-columns: 70vw;
+  grid-template-rows: auto;
   grid-template-areas: 
-  "form"
-  "ftr";
+  "container-all";
   justify-content: center;
   border-radius: 25px;
 }
+
+#user-UI {
+  grid-area: container-all; 
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 40vh auto auto;
+  grid-template-areas: 
+  "form"
+  "pic"
+  "output";
+  justify-content: center;
+  border-radius: 25px;
+  border: 2px solid white;
+}
+
+#entry-form {
+  grid-area: form;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 0 0 15px -2px #444444;
+  border-bottom: none;
+  background: black;
+}
+
+#output {
+  grid-area: output;
+  border: 1px black solid;
+}
+
+#img-holder {
+  grid-area: pic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 .user-input {
   font-size: 0.8em;
@@ -83,45 +123,27 @@ h4 {
   color: $white;
 }
 
-#userUI {
-  grid-area: form;
-  display: grid; 
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 100%;
-  grid-template-areas: "output input";
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  box-shadow: 0 0 15px -2px #444444;
-}
 
-#entry-form {
-  grid-area: input;
-  justify-content: center;
-  background: black;
-}
+// # {
+//   grid-area: input;
+//   justify-content: center;
+//   background: black;
+// }
 
-#output {
-  grid-area: output;
-  display: grid;
-  grid-template-columns: 90%;
-  grid-template-rows: 30% 70%;
-  grid-template-areas: 
-  "img"
-  "weather";
-  background-color: transparent;
-  justify-content: center;
-}
+// #output {
+//   grid-area: output;
+//   display: grid;
+//   grid-template-columns: 90%;
+//   grid-template-rows: 30% 65%;
+//   grid-template-areas: 
+//   "weather";
+//   background-color: transparent;
+//   justify-content: center;
+// }
 
-#img-holder {
-  grid-area: img;
-  
-  border: 10px red solid;
-}
 
-#result-holder {
-  grid-area: weather;
-  border: 1px solid black;
-}
+
+
 
 button {
   margin-left: 20vw;

@@ -28,20 +28,10 @@ export const handleSubmit = (e) => {
   let destination = destValidation(userCity);
 
   if (name && interval && destination) {
+    imgHolder.style.height = "30vh";
     let preLoader = document.getElementById("pre-loader-holder"); //play the loading animation
   preLoader.classList.add("pre-loader");
-  let loadCounter = 2;
   document.getElementById("text").innerHTML = "NOW LOADING";
-
-  let loadTimer = setInterval(function(){ //create a setinterval function as a countdown. When countdown reaches 0, the loading animation will be removed. This will coincide with the user info appearing in the UI. 
-    if(loadCounter <= 0){
-      clearInterval(loadTimer);
-      preLoader.classList.remove("pre-loader");
-      document.getElementById("text").innerHTML = "";
-    } else {
-      loadCounter -= 1;
-    }
-  }, 600);
   
     console.log("all is true")
     postData(userDest, interval)

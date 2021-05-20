@@ -7,8 +7,6 @@ $bounce_height: 30px;
 
 .pre-loader {
   position: absolute;
-  top: 25%;
-  left: 25%;
   #text {
     color: white;
     display: inline-block;
@@ -17,7 +15,6 @@ $bounce_height: 30px;
   }
   .bounceball {
     position: relative;
-    display: inline-block;
     height: 37px;
     width: $width;
     &:before {
