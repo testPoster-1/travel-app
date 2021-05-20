@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -25,6 +25,10 @@
     </div>
     <div class="user-input">
       <label for="date">Please enter date you are leaving:</label>
+      <input class="no-focus" type="date" name="date" id="leave-date">
+    </div>
+    <div class="user-input">
+      <label for="date">Please enter date you are returning:</label>
       <input class="no-focus" type="date" name="date" id="leave-date">
     </div>
     <div class="user-input">
@@ -98,6 +102,7 @@
       <button id="submit" type="submit">Get Weather</button>
     </form>
     <div id="img-holder">
+      <h4 id="err-holder"></h4>
       <div id="pre-loader-holder">
         <div class="loading">
           <div class="bounceball"></div>
@@ -114,7 +119,7 @@
         <h3>Rain:</h3>
         <h3>Snow:</h3>
       </div>
-      <h4 id="err-holder"></h4>
+      
       
     </div>
   </div>  <!--End userUI div -->
