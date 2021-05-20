@@ -23,9 +23,9 @@ export const handleSubmit = (e) => {
   console.log(`Leave Date: ${userDate}`);
   console.log(`name: ${userName}`);
 
-  let interval = timeDifference(userDate);
+  let interval = timeDifference(userDate, imgHolder);
   let name = nameValidation(userName);
-  let destination = destValidation(userCity);
+  let destination = destValidation(userCity, imgHolder);
 
   if (name && interval && destination) {
     imgHolder.style.height = "30vh";

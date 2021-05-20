@@ -9,6 +9,8 @@ $white: #fff;
 body {
   height: 100vh;
   background: linear-gradient(135deg,orange, 65%, cyan) ;
+  background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 button {
