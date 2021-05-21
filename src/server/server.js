@@ -55,39 +55,41 @@ app.post("/fetchData", async (req, res) => {
       console.log("error", error);
     }
 
-    if (interval == 1) {
-    try {
-    let weatherURL = `https://api.weatherbit.io/v2.0/current?lat=${fetchedData.lat}&lon=${fetchedData.lng}&key=${weatherKEY}&units=I`;
+    let weatherURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${fetchedData.lat}&lon=${fetchedData.lng}&key=${weatherKEY}&units=I`;
     let weatherData = await fetch (weatherURL);
     let weatherDataJSON = await weatherData.json();
+    console.log(JSON.stringify(weatherDataJSON));
+    let newWeatherEntry = {};
 
-    let newWeatherEntry = {
-      sunrise: weatherDataJSON.data[0].sunrise,
-      sunset: weatherDataJSON.data[0].sunset,
-      snow: weatherDataJSON.data[0].snow,
-      rain: weatherDataJSON.data[0].precip,
-      general: weatherDataJSON.data[0].weather.description,
-      temp: weatherDataJSON.data[0].temp      
-    }
-
-    fetchedData = {...fetchedData, ...newWeatherEntry};
+    if (interval == 1) {
+    try {
+      for (let i = 0; i <= 2; i++) {
+        newWeatherEntry[i] = {
+          snow: weatherDataJSON.data[i].snow,
+          rain: weatherDataJSON.data[i].precip,
+          general: weatherDataJSON.data[i].weather.description,
+          temp: weatherDataJSON.data[i].temp
+        }
+        console.log(newWeatherEntry);
+      }
+    console.log(`After a few days: ${JSON.stringify(newWeatherEntry)}`);
   
   } catch (error) {
     console.log("error", error);
   }
 } else {
   try {  
-    let weatherURL = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${fetchedData.lat}&lon=${fetchedData.lng}&key=${weatherKEY}&units=I`;
-    let weatherData = await fetch (weatherURL);
-    let weatherDataJSON = await weatherData.json();
-    console.log(`more than 1 week: ${JSON.stringify(weatherDataJSON)}`);
 
-    let newWeatherEntry = {
-      data: weatherDataJSON.data    
+    for (let i = 0; i <= 6; i++) {
+      newWeatherEntry[i] = {
+        snow: weatherDataJSON.data[i].snow,
+        rain: weatherDataJSON.data[i].precip,
+        general: weatherDataJSON.data[i].weather.description,
+        temp: weatherDataJSON.data[i].temp
+      }
+      console.log(newWeatherEntry);
     }
-
-    fetchedData = {...fetchedData, ...newWeatherEntry};
-  
+  console.log(`After a 7 days: ${JSON.stringify(newWeatherEntry)}`);
   } catch (error) {
     console.log("error", error);
   }
@@ -122,5 +124,5 @@ app.post("/fetchData", async (req, res) => {
     console.log("error", error);
   }
   console.log(`this is the data I will send: ${JSON.stringify(fetchedData)}`);
-  res.send(fetchedData);
+  res.send({fetchedData, newWeatherEntry});
 });

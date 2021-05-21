@@ -45,7 +45,7 @@ export const handleSubmit = (e) => {
     console.log("all is true")
     postData(userDest, interval)
       //.then (coords => weatherbitFetch(coords));
-      .then(dataObj => updateUI(dataObj, imgHolder));
+      .then((dataObj) => updateUI(dataObj, imgHolder, userDate));
   }
 }
 
@@ -59,8 +59,9 @@ const postData = async (userDest, interval) => {
     body: JSON.stringify({userDest, interval}) //Notice this was sent as an object
   });
   let dataObj = await getData.json();
-  console.log(`This is my object I am returning: ${JSON.stringify(dataObj)}`);
-  return dataObj;
+  console.log(dataObj.newWeatherEntry);
+  console.log(`This is my object I am returning: ${(dataObj)}`);
+  return (dataObj);
 }
 
 
@@ -72,3 +73,22 @@ const vacayLength = (userDate, rtnDate) => {
   const timeDiff = (new Date(userRtnDate).getTime() - new Date(leaveDate).getTime()) / 86400000;  //subtracting the getTime will give you time in milliseconds. Divde by the number of milliseconds in a day
   return timeDiff;
 }
+
+
+let acc = document.getElementsByClassName("accordion");
+  
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      /* Toggle between adding and removing the "active" class,
+      to highlight the button that controls the panel */
+      this.classList.toggle("active");
+  
+      /* Toggle between hiding and showing the active panel */
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
