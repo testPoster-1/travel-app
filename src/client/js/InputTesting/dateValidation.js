@@ -1,4 +1,4 @@
-export const timeDifference = (userDate) => {
+export const timeDifference = (userDate, imgHolder) => {
   if (userDate) {
     let d = new Date(); //gets current date and time to compare against the user's date
     let inputDate = new Date(`${userDate} 00:00`); //new Date() assumes UTC time, need to add the 00:00 in the string to set user input to same time zone as "d"
@@ -16,11 +16,23 @@ export const timeDifference = (userDate) => {
       return 1
     } else {
       console.log("Input date is in the past"); //Will be true if user inputs date in the past 
+      imgHolder.scrollIntoView({
+          block: "center",
+          behaviour: "smooth",
+          alignToTop: false, 
+          inline: "nearest"
+        });
       document.getElementById("err-holder").innerHTML = "You entered a date that has already passed. Please enter a date that is no earlier than today."
       return false;
     } 
   } else {
     console.log("No date - please enter a date");
+    imgHolder.scrollIntoView({
+      block: "center",
+      behaviour: "smooth",
+      alignToTop: false, 
+      inline: "nearest"
+    });
     document.getElementById("err-holder").innerHTML = "Please enter the date of when you are leaving."
     return false;
   }

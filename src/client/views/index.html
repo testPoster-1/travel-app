@@ -2,30 +2,12 @@
 <html>
 
 <head>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <div id="container">
-    
-    <div id="userUI">
-    
-    <div id="output">
-      <div id="img-holder"></div>
-      <div id="result-holder">
-        <h2>Hi, Angela</h2>
-        <h3>Destination: </h3>
-        <h3>: </h3>
-        <h3>Destination: </h3>
-      </div>
-      <h4 id="err-holder"></h4>
-      <div id="pre-loader-holder">
-        <div class="loading">
-          <div class="bounceball"></div>
-          <div id="text"></div>
-        </div>
-      </div>
-    </div>
+    <div id="user-UI">
     <form id="entry-form">
       <header id="header">
         <h2>Travel App</h2>
@@ -33,17 +15,21 @@
       </header>
       <div class="user-input"> 
       <label for="name">Please enter your name:</label>
-      <input class="no-focus" type="text" id="name">
+      <input class="no-focus" type="text" id="name" value="Angela">
       <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
     </div>
     <div class="user-input">
       <label for="city">Please enter a destination city:</label>
-      <input class="no-focus" type="text" name="location" id="city">
+      <input class="no-focus" type="text" name="location" id="city" value="Chicago">
       <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
     </div>
     <div class="user-input">
-      <label for="date">Please enter date you are leaving:</label>
-      <input class="no-focus" type="date" name="date" id="leave-date">
+      <label for="leave-date">Please enter date you are leaving:</label>
+      <input class="no-focus" type="date" name="leave-date" id="leave-date">
+    </div>
+    <div class="user-input">
+      <label for="rtn-date">Please enter date you are returning:</label>
+      <input class="no-focus" type="date" name="rtn-date" id="rtn-date">
     </div>
     <div class="user-input">
       <label for="state"></label>
@@ -115,6 +101,27 @@
       </div>
       <button id="submit" type="submit">Get Weather</button>
     </form>
+    <div id="img-holder">
+      <h4 id="err-holder"></h4>
+      <div id="pre-loader-holder">
+        <div class="loading">
+          <div class="bounceball"></div>
+          <div id="text"></div>
+        </div>
+      </div>
+    </div>
+    <div id="output">
+      <div id="result-holder">
+        <h2 class="center-text">Hi, Angela</h2>
+        <h3 class="center-text">For your trip to _____ starting on ___ and lasting ___ days</h3>
+        <h3>Current Temperature:</h3>
+        <h3>General Weather:</h3>
+        <h3>Rain:</h3>
+        <h3>Snow:</h3>
+      </div>
+      
+      
+    </div>
   </div>  <!--End userUI div -->
   </div> <!--End main container div -->
  

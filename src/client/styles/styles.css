@@ -1,30 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=KoHo&family=Niramit&display=swap");
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 .pre-loader {
+  position: absolute; }
+
+.pre-loader #text {
+  color: white;
+  display: inline-block;
+  margin-left: 5px;
+  font-family: Montserrat; }
+
+.pre-loader .bounceball {
+  position: relative;
+  height: 37px;
+  width: 15px; }
+
+.pre-loader .bounceball:before {
   position: absolute;
-  top: 25%;
-  left: 25%; }
-  .pre-loader #text {
-    color: white;
-    display: inline-block;
-    margin-left: 5px;
-    font-family: Montserrat; }
-  .pre-loader .bounceball {
-    position: relative;
-    display: inline-block;
-    height: 37px;
-    width: 15px; }
-    .pre-loader .bounceball:before {
-      position: absolute;
-      content: '';
-      display: block;
-      top: 0;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: white;
-      transform-origin: 50%;
-      animation: bounce 500ms alternate infinite ease; }
+  content: '';
+  display: block;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: white;
+  transform-origin: 50%;
+  animation: bounce 500ms alternate infinite ease; }
 
 @keyframes bounce {
   0% {
@@ -41,12 +41,20 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(135deg, orange, 65%, cyan); }
+  background: linear-gradient(135deg, orange, 65%, cyan);
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
 
-h2,
 button {
   font-family: "KoHo", sans-serif;
   margin: 10px 0 0 0; }
+
+h2 {
+  font-family: "KoHo", sans-serif;
+  margin: 10px 0 0 0; }
+
+.center-text {
+  text-align: center; }
 
 p,
 input,
@@ -63,21 +71,62 @@ h4 {
   width: 45vw;
   margin: 5vh auto; }
 
+@media only screen and (max-width: 450px) {
+  #err-holder {
+    position: relative;
+    text-align: center;
+    width: 65vw;
+    margin: 5vh auto;
+    font-size: 1.2em;
+    color: white; } }
+
 #container {
   display: grid;
-  grid-template-columns: 80vw;
-  grid-template-rows: 90vh 5vh;
-  grid-template-areas: "form" "ftr";
-  justify-content: center;
-  border-radius: 25px; }
+  grid-template-columns: 70vw;
+  grid-template-rows: auto;
+  grid-template-areas: "container-all";
+  justify-content: center; }
 
-.user-input {
-  font-size: 0.8em;
-  color: #fff;
-  margin: 0 10px 30px;
-  border-bottom: 1px solid #fff;
-  width: 80%;
-  margin: 0 0 15px 20px; }
+@media only screen and (max-width: 450px) {
+  #user-UI {
+    grid-area: container-all;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: "form" "pic" "output";
+    justify-content: center;
+    border-radius: 25px;
+    border: 2px solid white;
+    margin-top: 2vh; } }
+
+#entry-form {
+  grid-area: form;
+  border-top-left-radius: 23px;
+  border-top-right-radius: 23px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 0 15px -2px #444444;
+  border-bottom: none;
+  background: black; }
+
+#output {
+  grid-area: output;
+  border: 1px black solid; }
+
+#img-holder {
+  grid-area: pic;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+@media only screen and (max-width: 450px) {
+  .user-input {
+    font-size: 0.8em;
+    color: #fff;
+    margin: 0 10px 30px;
+    border-bottom: 1px solid #fff;
+    width: 80%;
+    margin: 0 0 15px 20px; }
   .user-input label {
     color: #636161; }
   .user-input input {
@@ -85,62 +134,35 @@ h4 {
   .user-input #state {
     color: #636161;
     margin: -4px;
-    font-family: "Niramit", sans-serif; }
+    font-family: "Niramit", sans-serif; } }
 
 .no-focus {
   background: transparent;
   border: none;
   color: #fff; }
-  .no-focus:focus {
-    /*removing the border when the input areas are in focus*/
-    outline: none; }
+
+.no-focus:focus {
+  /*removing the border when the input areas are in focus*/
+  outline: none; }
 
 #header {
   text-align: center;
   color: #fff; }
 
-#userUI {
-  grid-area: form;
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 100%;
-  grid-template-areas: "output input";
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  box-shadow: 0 0 15px -2px #444444; }
-
-#entry-form {
-  grid-area: input;
-  justify-content: center;
-  background: black; }
-
-#output {
-  grid-area: output;
-  display: grid;
-  grid-template-columns: 90%;
-  grid-template-rows: 30% 70%;
-  grid-template-areas: "img" "weather";
-  background-color: transparent;
-  justify-content: center; }
-
-#img-holder {
-  grid-area: img;
-  border: 10px red solid; }
-
-#result-holder {
-  grid-area: weather;
-  border: 1px solid black; }
-
-button {
-  margin-left: 20vw;
-  border: none;
-  border-radius: 5px;
-  color: #636161;
-  font-size: 1em;
-  background-color: transparent; }
-  button:hover {
-    border: 2px solid #636161; }
-  button:active {
-    border: 2px solid white;
+@media only screen and (max-width: 450px) {
+  button {
+    display: flex;
+    margin: auto;
     border-radius: 5px;
-    color: white; }
+    color: white;
+    font-size: 1em;
+    margin-bottom: 5vh;
+    background-color: transparent;
+    border: 1px solid white; }
+  button:hover {
+    border: 1px solid white; }
+  button:active {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    background: white; } }
