@@ -2,6 +2,15 @@ import { vacayLength } from "./InputTesting/dateValidation";
 
 export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
+  let length = vacayLength(userDate, rtnDate);
+  let outputName = document.getElementById("outputName");
+  console.log("output name: " + outputName);
+  let tripInfo = document.getElementById("tripInfo");
+  let outputWeather = document.getElementById("outputWeather");
+  document.getElementById("accordion-holder").innerHTML = "";
+  outputName.innerHTML = "wait";
+  tripInfo.innerHTML = "";
+  outputWeather.innerHTML = "";
 
   console.log("Upate UI Ran");
   let preLoader = document.getElementById("pre-loader-holder");
@@ -51,8 +60,8 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
       newP.appendChild(weatherNode);
       newDiv.appendChild(newP);
     }
-    document.getElementById("result-holder").appendChild(newBtn); //Appending into the DOM 
-    document.getElementById("result-holder").appendChild(newDiv); //Appending into the DOM 
+    document.getElementById("accordion-holder").appendChild(newBtn); //Appending into the DOM 
+    document.getElementById("accordion-holder").appendChild(newDiv); //Appending into the DOM 
   }
 
   var acc = document.getElementsByClassName("accordion");
@@ -73,10 +82,6 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
       }
     });
   }
-  let length = vacayLength(userDate, rtnDate);
-  let outputName = document.getElementById("outputName");
-  let tripInfo = document.getElementById("tripInfo");
-  let outputWeather = document.getElementById("outputWeather");
   outputName.innerHTML = `Hi, ${userName}`;
   tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate} and lasting ${length} days:`;
   outputWeather.innerHTML = `Weather Data`;

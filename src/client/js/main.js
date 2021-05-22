@@ -1,7 +1,6 @@
 
 import { updateUI } from "./updateUI";
 import { timeDifference } from "./InputTesting/dateValidation";
-import { PixabayImages } from "./getImages";
 import { nameValidation } from "./InputTesting/nameValidation";
 import { destValidation } from "./InputTesting/destValidation";
 
@@ -16,6 +15,14 @@ export const handleSubmit = (e) => {
   let userState = document.getElementById("state").value;
   let userCountry = document.getElementById("country").value;
   let userDest = (`${userCity},${userState},${userCountry}`); 
+  let outputName = document.getElementById("outputName");
+  console.log("output name: " + outputName);
+  let tripInfo = document.getElementById("tripInfo");
+  let outputWeather = document.getElementById("outputWeather");
+  document.getElementById("accordion-holder").innerHTML = "";
+  outputName.innerHTML = "";
+  tripInfo.innerHTML = "";
+  outputWeather.innerHTML = "";
   
   const imgHolder = document.querySelector("#img-holder");
   imgHolder.style.backgroundImage = ``;
