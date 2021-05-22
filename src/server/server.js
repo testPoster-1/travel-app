@@ -31,7 +31,7 @@ app.listen(port, () => {
 app.post("/fetchData", async (req, res) => {
   let city = req.body.userDest; //gets the destination city from the user.
   let interval = req.body.interval;
-  console.log("this is my city " + city);
+  console.log("this is my interval " + interval);
   const geoURL = `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${geoUsername}`; //obtained from the Geo API documentation
 
   try {
@@ -61,9 +61,8 @@ app.post("/fetchData", async (req, res) => {
     console.log(JSON.stringify(weatherDataJSON));
     let newWeatherEntry = {};
 
-    if (interval == 1) {
     try {
-      for (let i = 0; i <= 2; i++) {
+      for (let i = 0; i < interval; i++) {
         newWeatherEntry[i] = {
           snow: weatherDataJSON.data[i].snow,
           rain: weatherDataJSON.data[i].precip,
@@ -77,23 +76,6 @@ app.post("/fetchData", async (req, res) => {
   } catch (error) {
     console.log("error", error);
   }
-} else {
-  try {  
-
-    for (let i = 0; i <= 6; i++) {
-      newWeatherEntry[i] = {
-        snow: weatherDataJSON.data[i].snow,
-        rain: weatherDataJSON.data[i].precip,
-        general: weatherDataJSON.data[i].weather.description,
-        temp: weatherDataJSON.data[i].temp
-      }
-      console.log(newWeatherEntry);
-    }
-  console.log(`After a 7 days: ${JSON.stringify(newWeatherEntry)}`);
-  } catch (error) {
-    console.log("error", error);
-  }
-}
 
   try {
     let pixabayURL = `https://pixabay.com/api/?key=${pixabayKEY}&q=${fetchedData.city}&image_type=photo&safesearch=true&order=popular&per_page=3`;

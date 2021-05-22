@@ -10,10 +10,10 @@ export const timeDifference = (userDate, imgHolder) => {
 
     if (timeDiff > 518400000) { //milliseconds - cut off is 6 days
       console.log("longer than 6 days aways");
-      return 2;
+      return 7;
     } else if (timeDiff >= 0 && timeDiff <= 518400000) {
       console.log ("Leaving in 6 days or less");
-      return 1
+      return 3;
     } else {
       console.log("Input date is in the past"); //Will be true if user inputs date in the past 
       imgHolder.scrollIntoView({

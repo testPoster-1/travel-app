@@ -28,6 +28,7 @@ export const handleSubmit = (e) => {
   let name = nameValidation(userName);
   let destination = destValidation(userCity, imgHolder);
   vacayLength(userDate, rtnDate);
+  console.log(interval);
 
   if (name && interval && destination) {
     imgHolder.style.height = "30vh";
