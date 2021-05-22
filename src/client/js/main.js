@@ -5,6 +5,7 @@ import { PixabayImages } from "./getImages";
 import { nameValidation } from "./InputTesting/nameValidation";
 import { destValidation } from "./InputTesting/destValidation";
 
+
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
   document.getElementById("err-holder").innerHTML = "";
@@ -27,7 +28,6 @@ export const handleSubmit = (e) => {
   let interval = timeDifference(userDate, imgHolder);
   let name = nameValidation(userName);
   let destination = destValidation(userCity, imgHolder);
-  vacayLength(userDate, rtnDate);
   console.log(interval);
 
   if (name && interval && destination) {
@@ -46,7 +46,7 @@ export const handleSubmit = (e) => {
     console.log("all is true")
     postData(userDest, interval)
       //.then (coords => weatherbitFetch(coords));
-      .then((dataObj) => updateUI(dataObj, imgHolder, userDate));
+      .then((dataObj) => updateUI(dataObj, imgHolder, userDate, userName, userCity, rtnDate));
   }
 }
 
@@ -63,16 +63,6 @@ const postData = async (userDest, interval) => {
   console.log(dataObj.newWeatherEntry);
   console.log(`This is my object I am returning: ${(dataObj)}`);
   return (dataObj);
-}
-
-
-const vacayLength = (userDate, rtnDate) => {
-  let leaveDate = new Date(`${userDate} 00:00`); //new Date() assumes UTC time, need to add the 00:00 in the string to set user input to same time zone as "d"
-  let userRtnDate = new Date(`${rtnDate} 00:00`); //gets current date and time to compare against the user's date
-  
-  console.log(`${userDate} + ${rtnDate}`);
-  const timeDiff = (new Date(userRtnDate).getTime() - new Date(leaveDate).getTime()) / 86400000;  //subtracting the getTime will give you time in milliseconds. Divde by the number of milliseconds in a day
-  return timeDiff;
 }
 
 

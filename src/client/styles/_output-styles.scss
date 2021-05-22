@@ -59,10 +59,24 @@ $bounce_height: 30px;
   margin-left: 5px;
 }
 
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
 .active:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
-.bolded {
-  font-weight: bold;
+.panel {
+  padding: 0 18px;
+  background-color: rgba(255, 255, 255, 0.4);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
+
+#tripInfo {
+  margin: 3vh 2vw;
+}
+

@@ -1,5 +1,7 @@
-export const updateUI = (dataObj, imgHolder, userDate) => {
-//recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
+import { vacayLength } from "./InputTesting/dateValidation";
+
+export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDate) => {
+  //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
 
   console.log("Upate UI Ran");
   let preLoader = document.getElementById("pre-loader-holder");
@@ -7,12 +9,13 @@ export const updateUI = (dataObj, imgHolder, userDate) => {
   document.getElementById("text").innerHTML = "";
   preLoader.classList.remove("pre-loader");
   console.log("Test" + dataObj.newWeatherEntry[0].snow);
+  let formatDate;
 
   for (let item in dataObj.newWeatherEntry) {
 
     console.log("weather item: " + JSON.stringify(dataObj.newWeatherEntry[item]));
     let dayCount = new Date(`${userDate} 00:00`);
-
+    formatDate = (dayCount.getMonth() + 1) + '/' + dayCount.getDate() + '/' + dayCount.getFullYear();
     dayCount.setDate(parseInt(dayCount.getDate()) + parseInt(item));
     let newBtn = document.createElement("button"); //create a <button></button> tag
     // newP.id = item; //generate unique ids for each p tag
@@ -52,22 +55,29 @@ export const updateUI = (dataObj, imgHolder, userDate) => {
     document.getElementById("result-holder").appendChild(newDiv); //Appending into the DOM 
   }
 
-var acc = document.getElementsByClassName("accordion");
-var i;
-console.log("acc: " + acc.length);
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  console.log("acc: " + acc.length);
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function () {
-    console.log("panel clicked");
-    this.classList.toggle("active");
-    console.log(document.getElementsByTagName("button"));
-    let panel = this.nextElementSibling;
-    console.log(panel);
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
-}
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+      console.log("panel clicked");
+      this.classList.toggle("active");
+      console.log(document.getElementsByTagName("button"));
+      let panel = this.nextElementSibling;
+      console.log(panel);
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+  let length = vacayLength(userDate, rtnDate);
+  let outputName = document.getElementById("outputName");
+  let tripInfo = document.getElementById("tripInfo");
+  let outputWeather = document.getElementById("outputWeather");
+  outputName.innerHTML = `Hi, ${userName}`;
+  tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate} and lasting ${length} days:`;
+  outputWeather.innerHTML = `Weather Data`;
 }

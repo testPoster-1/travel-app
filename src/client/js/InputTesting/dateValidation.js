@@ -37,3 +37,13 @@ export const timeDifference = (userDate, imgHolder) => {
     return false;
   }
 }
+
+
+export const vacayLength = (userDate, rtnDate) => {
+  let leaveDate = new Date(`${userDate} 00:00`); //new Date() assumes UTC time, need to add the 00:00 in the string to set user input to same time zone as "d"
+  let userRtnDate = new Date(`${rtnDate} 00:00`); //gets current date and time to compare against the user's date
+  
+  console.log(`${userDate} + ${rtnDate}`);
+  const timeDiff = (new Date(userRtnDate).getTime() - new Date(leaveDate).getTime()) / 86400000;  //subtracting the getTime will give you time in milliseconds. Divde by the number of milliseconds in a day
+  return timeDiff;
+}
