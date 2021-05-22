@@ -62,3 +62,7 @@ $bounce_height: 30px;
 .active:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+
+.bolded {
+  font-weight: bold;
+}

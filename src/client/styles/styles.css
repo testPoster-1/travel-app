@@ -51,6 +51,9 @@
   content: "\2796";
   /* Unicode character for "minus" sign (-) */ }
 
+.bolded {
+  font-weight: bold; }
+
 body {
   height: 100vh;
   background: linear-gradient(135deg, orange, 65%, cyan);
@@ -76,8 +79,9 @@ body {
 .panel {
   padding: 0 18px;
   background-color: white;
-  display: none;
-  overflow: hidden; }
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out; }
 
 button {
   font-family: "KoHo", sans-serif;
