@@ -19,12 +19,15 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   preLoader.classList.remove("pre-loader");
   console.log("Test" + dataObj.newWeatherEntry[0].snow);
   let formatDate;
+  let formatRtn;
 
   for (let item in dataObj.newWeatherEntry) {
 
     console.log("weather item: " + JSON.stringify(dataObj.newWeatherEntry[item]));
     let dayCount = new Date(`${userDate} 00:00`);
+    let rtn = new Date(`${rtnDate} 00:00`);
     formatDate = (dayCount.getMonth() + 1) + '/' + dayCount.getDate() + '/' + dayCount.getFullYear();
+    formatRtn = (rtn.getMonth() + 1) + '/' + rtn.getDate() + '/' + rtn.getFullYear();
     dayCount.setDate(parseInt(dayCount.getDate()) + parseInt(item));
     let newBtn = document.createElement("button"); //create a <button></button> tag
     // newP.id = item; //generate unique ids for each p tag
@@ -83,6 +86,10 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
     });
   }
   outputName.innerHTML = `Hi, ${userName}`;
-  tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate} and lasting ${length} days:`;
+  tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   outputWeather.innerHTML = `Weather Data`;
+
+  let deleteBtn = document.getElementById("delete-trip");
+  deleteBtn.style.display = "block";
+  
 }

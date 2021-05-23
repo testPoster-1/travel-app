@@ -158,7 +158,7 @@ h4 {
 }
 
 
-#submit {
+.btn-style {
   @media only screen and (max-width: 450px) {
   display: flex;
   margin: auto;
@@ -178,6 +178,13 @@ h4 {
     background: white; 
   }
 }
+}
+
+#delete-trip {
+  color: black;
+  border: 1px solid black;
+  display: none;
+  margin-top: 4vh;
 }
 
 

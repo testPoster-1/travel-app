@@ -191,7 +191,7 @@ h4 {
   color: #fff; }
 
 @media only screen and (max-width: 450px) {
-  #submit {
+  .btn-style {
     display: flex;
     margin: auto;
     border-radius: 5px;
@@ -200,10 +200,16 @@ h4 {
     margin-bottom: 5vh;
     background-color: transparent;
     border: 1px solid white; }
-  #submit:hover {
+  .btn-style:hover {
     border: 1px solid white; }
-  #submit:active {
+  .btn-style:active {
     border: 1px solid black;
     border-radius: 5px;
     color: black;
     background: white; } }
+
+#delete-trip {
+  color: black;
+  border: 1px solid black;
+  display: none;
+  margin-top: 4vh; }

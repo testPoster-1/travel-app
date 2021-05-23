@@ -2,10 +2,8 @@ export const destValidation = (userCity, imgHolder) => {
   console.log(userCity);
 
   if (userCity) {
-    console.log("tru");
     return true;
   } else {
-    console.log("no city");
     imgHolder.scrollIntoView({
       block: "center",
       behaviour: "smooth",

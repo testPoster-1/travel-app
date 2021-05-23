@@ -3,6 +3,8 @@ import { updateUI } from "./updateUI";
 import { timeDifference } from "./InputTesting/dateValidation";
 import { nameValidation } from "./InputTesting/nameValidation";
 import { destValidation } from "./InputTesting/destValidation";
+import {deleteTrip} from "./deleteTrip";
+
 
 
 export const handleSubmit = (e) => {
@@ -27,15 +29,9 @@ export const handleSubmit = (e) => {
   const imgHolder = document.querySelector("#img-holder");
   imgHolder.style.backgroundImage = ``;
 
-  console.log("User clicked submit");
-  console.log(`location: ${userDest}`);
-  console.log(`Leave Date: ${userDate}`);
-  console.log(`name: ${userName}`);
-
   let interval = timeDifference(userDate, imgHolder);
   let name = nameValidation(userName);
   let destination = destValidation(userCity, imgHolder);
-  console.log(interval);
 
   if (name && interval && destination) {
     imgHolder.style.height = "30vh";
@@ -71,5 +67,8 @@ const postData = async (userDest, interval) => {
   console.log(`This is my object I am returning: ${(dataObj)}`);
   return (dataObj);
 }
+
+let deleteBtn = document.getElementById("delete-trip");
+deleteBtn.addEventListener("click", deleteTrip);
 
 
