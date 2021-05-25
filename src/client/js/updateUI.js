@@ -24,6 +24,13 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
 
   for (let item in dataObj.newWeatherEntry) {
 
+    let myImg = require.context("../images/icons");
+    let weatherIcon = myImg(`./${dataObj.newWeatherEntry[item].icon}.png`).default;
+    let newImg = document.createElement("img");
+    newImg.src = weatherIcon;
+    newImg.classList.add("icon-size");
+    console.log(newImg);
+
     let dayCount = new Date(`${userDate} 00:00`);
     let rtn = new Date(`${rtnDate} 00:00`);
     formatDate = (dayCount.getMonth() + 1) + '/' + dayCount.getDate() + '/' + dayCount.getFullYear();
@@ -33,7 +40,8 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
     // newP.id = item; //generate unique ids for each p tag
     newBtn.id = `btn${item}`;
     newBtn.classList.add("accordion");
-    newBtn.innerHTML = `Weather for ${dayCount.getMonth() + 1}/${dayCount.getDate()} `;
+    newBtn.innerHTML = `Weather for ${dayCount.getMonth() + 1}/${dayCount.getDate()}`;
+    newBtn.appendChild(newImg);
 
 
 
@@ -43,6 +51,7 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
 
     for (let element in dataObj.newWeatherEntry[item]) {
       let weatherElem = dataObj.newWeatherEntry[item][element];
+      if (element != "icon") {
       element = element[0].toUpperCase() + element.slice(1); //capitalize the first letter 
       let newP = document.createElement("p");
       let bolded = document.createElement("b"); //created a <b></b> tag 
@@ -51,25 +60,23 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
       newP.appendChild(bolded);
 
       let weatherNode;
-      let myImg = require.context("../images/icons");
-      let weatherIcon = myImg(`./${dataObj.newWeatherEntry[0].icon}.png`).default;
-      let newImg = document.createElement("img");
-      newImg.src = weatherIcon;
+      
       if (element == "Snow" || element == "Rain") {
         weatherNode = document.createTextNode(`: ${weatherElem} mm`);
       } else if (element == "Temp") {
         weatherNode = document.createTextNode(`: ${weatherElem} F`);
       } else {
         weatherNode = document.createTextNode(`: ${weatherElem}`);
-        
       }
       newP.appendChild(weatherNode);
       newDiv.appendChild(newP);
-      newDiv.appendChild(newImg);
     }
     document.getElementById("accordion-holder").appendChild(newBtn); //Appending into the DOM 
+    
+
     document.getElementById("accordion-holder").appendChild(newDiv); //Appending into the DOM 
   }
+}
 
   var acc = document.getElementsByClassName("accordion");
   var i;

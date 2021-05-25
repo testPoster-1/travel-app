@@ -39,9 +39,10 @@
   100% {
     top: 0; } }
 
-#icon-holder {
+.icon-size {
   height: 10vh;
-  width: 10vh; }
+  width: 13vw;
+  margin-left: 2vw; }
 
 .accordion:after {
   content: '\02795';
