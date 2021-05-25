@@ -67,6 +67,7 @@ app.post("/fetchData", async (req, res) => {
           snow: weatherDataJSON.data[i].snow,
           rain: weatherDataJSON.data[i].precip,
           general: weatherDataJSON.data[i].weather.description,
+          icon: weatherDataJSON.data[i].weather.icon,
           temp: weatherDataJSON.data[i].temp
         }
         console.log(newWeatherEntry);

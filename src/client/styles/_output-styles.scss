@@ -51,6 +51,11 @@ $bounce_height: 30px;
 
 //kota shimura @wabeshew
 
+#icon-holder {
+  height: 10vh;
+  width: 10vh;
+}
+
 .accordion:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;

@@ -2,9 +2,10 @@ import { vacayLength } from "./InputTesting/dateValidation";
 
 export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
+  
+
   let length = vacayLength(userDate, rtnDate);
   let outputName = document.getElementById("outputName");
-  console.log("output name: " + outputName);
   let tripInfo = document.getElementById("tripInfo");
   let outputWeather = document.getElementById("outputWeather");
   document.getElementById("accordion-holder").innerHTML = "";
@@ -12,18 +13,17 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   tripInfo.innerHTML = "";
   outputWeather.innerHTML = "";
 
-  console.log("Upate UI Ran");
   let preLoader = document.getElementById("pre-loader-holder");
   imgHolder.style.backgroundImage = `url(${dataObj.fetchedData.pixURL})`;
   document.getElementById("text").innerHTML = "";
   preLoader.classList.remove("pre-loader");
-  console.log("Test" + dataObj.newWeatherEntry[0].snow);
   let formatDate;
   let formatRtn;
 
+  // import myImg from `"./eos.jpg"`; 
+
   for (let item in dataObj.newWeatherEntry) {
 
-    console.log("weather item: " + JSON.stringify(dataObj.newWeatherEntry[item]));
     let dayCount = new Date(`${userDate} 00:00`);
     let rtn = new Date(`${rtnDate} 00:00`);
     formatDate = (dayCount.getMonth() + 1) + '/' + dayCount.getDate() + '/' + dayCount.getFullYear();
@@ -39,11 +39,9 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
 
     let newDiv = document.createElement("div");
 
-    console.log(newBtn);
     newDiv.classList.add("panel");
 
     for (let element in dataObj.newWeatherEntry[item]) {
-      console.log("element: " + element);
       let weatherElem = dataObj.newWeatherEntry[item][element];
       element = element[0].toUpperCase() + element.slice(1); //capitalize the first letter 
       let newP = document.createElement("p");
@@ -53,15 +51,21 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
       newP.appendChild(bolded);
 
       let weatherNode;
+      let myImg = require.context("../images/icons");
+      let weatherIcon = myImg(`./${dataObj.newWeatherEntry[0].icon}.png`).default;
+      let newImg = document.createElement("img");
+      newImg.src = weatherIcon;
       if (element == "Snow" || element == "Rain") {
         weatherNode = document.createTextNode(`: ${weatherElem} mm`);
       } else if (element == "Temp") {
         weatherNode = document.createTextNode(`: ${weatherElem} F`);
       } else {
         weatherNode = document.createTextNode(`: ${weatherElem}`);
+        
       }
       newP.appendChild(weatherNode);
       newDiv.appendChild(newP);
+      newDiv.appendChild(newImg);
     }
     document.getElementById("accordion-holder").appendChild(newBtn); //Appending into the DOM 
     document.getElementById("accordion-holder").appendChild(newDiv); //Appending into the DOM 
@@ -69,15 +73,11 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
 
   var acc = document.getElementsByClassName("accordion");
   var i;
-  console.log("acc: " + acc.length);
 
   for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
-      console.log("panel clicked");
       this.classList.toggle("active");
-      console.log(document.getElementsByTagName("button"));
       let panel = this.nextElementSibling;
-      console.log(panel);
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
       } else {
@@ -88,7 +88,6 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   outputName.innerHTML = `Hi, ${userName}`;
   tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   outputWeather.innerHTML = `Weather Data`;
-
   let deleteBtn = document.getElementById("delete-trip");
   deleteBtn.style.display = "block";
   

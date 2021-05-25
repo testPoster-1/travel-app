@@ -39,6 +39,10 @@
   100% {
     top: 0; } }
 
+#icon-holder {
+  height: 10vh;
+  width: 10vh; }
+
 .accordion:after {
   content: '\02795';
   /* Unicode character for "plus" sign (+) */
