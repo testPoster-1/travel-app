@@ -1,4 +1,5 @@
 import { vacayLength } from "./InputTesting/dateValidation";
+import { persistance } from "./localStorage";
 
 export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
@@ -9,7 +10,7 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   let tripInfo = document.getElementById("tripInfo");
   let outputWeather = document.getElementById("outputWeather");
   document.getElementById("accordion-holder").innerHTML = "";
-  outputName.innerHTML = "wait";
+  outputName.innerHTML = "";
   tripInfo.innerHTML = "";
   outputWeather.innerHTML = "";
 
@@ -20,17 +21,17 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   let formatDate;
   let formatRtn;
 
-  // import myImg from `"./eos.jpg"`; 
-
   for (let item in dataObj.newWeatherEntry) {
 
-    let myImg = require.context("../images/icons");
-    let weatherIcon = myImg(`./${dataObj.newWeatherEntry[item].icon}.png`).default;
+//--------------dynamically create images from images within a folder----------------------
+    let myImg = require.context("../images/icons"); //require.context and then add in the folder that contains the images
+    let weatherIcon = myImg(`./${dataObj.newWeatherEntry[item].icon}.png`).default; //note the .default
     let newImg = document.createElement("img");
     newImg.src = weatherIcon;
     newImg.classList.add("icon-size");
-    console.log(newImg);
+//-----------------------------------------------------------------------------------------
 
+//-----------------------------------Create collapsible button----------------------------
     let dayCount = new Date(`${userDate} 00:00`);
     let rtn = new Date(`${rtnDate} 00:00`);
     formatDate = (dayCount.getMonth() + 1) + '/' + dayCount.getDate() + '/' + dayCount.getFullYear();
@@ -42,12 +43,9 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
     newBtn.classList.add("accordion");
     newBtn.innerHTML = `Weather for ${dayCount.getMonth() + 1}/${dayCount.getDate()}`;
     newBtn.appendChild(newImg);
-
-
-
     let newDiv = document.createElement("div");
-
     newDiv.classList.add("panel");
+//----------------------------------------------------------------------------------------
 
     for (let element in dataObj.newWeatherEntry[item]) {
       let weatherElem = dataObj.newWeatherEntry[item][element];
@@ -72,8 +70,6 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
       newDiv.appendChild(newP);
     }
     document.getElementById("accordion-holder").appendChild(newBtn); //Appending into the DOM 
-    
-
     document.getElementById("accordion-holder").appendChild(newDiv); //Appending into the DOM 
   }
 }
@@ -88,14 +84,17 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
       } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
       }
     });
   }
+
   outputName.innerHTML = `Hi, ${userName}`;
   tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   outputWeather.innerHTML = `Weather Data`;
   let deleteBtn = document.getElementById("delete-trip");
   deleteBtn.style.display = "block";
   
+  persistance();
+
 }
