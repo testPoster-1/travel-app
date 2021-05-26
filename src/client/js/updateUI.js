@@ -95,6 +95,6 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   let deleteBtn = document.getElementById("delete-trip");
   deleteBtn.style.display = "block";
   
-  persistance();
+  persistance(dataObj);
 
 }
