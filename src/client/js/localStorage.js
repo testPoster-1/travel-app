@@ -9,7 +9,7 @@ localStorage.setItem('trips', JSON.stringify(tripArray));
 console.log(data);
 
 
-//localStorage.clear()    to clear the local storage
+//localStorage.clear();   clear local storage
 
 
 }

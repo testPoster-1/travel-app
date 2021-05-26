@@ -213,7 +213,7 @@ h4 {
     color: black;
     background: white; } }
 
-#delete-trip {
+.trip-info {
   color: black;
   border: 1px solid black;
   display: none;

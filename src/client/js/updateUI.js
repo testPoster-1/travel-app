@@ -92,9 +92,11 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   outputName.innerHTML = `Hi, ${userName}`;
   tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   outputWeather.innerHTML = `Weather Data`;
-  let deleteBtn = document.getElementById("delete-trip");
-  deleteBtn.style.display = "block";
+  let handleTrip = document.getElementsByClassName("trip-info");
+  handleTrip[0].style.display = "block";
+  handleTrip[1].style.display = "block";
   
+  document.getElementById("save-trip").addEventListener("click", function () {
   persistance(dataObj);
-
+  });
 }
