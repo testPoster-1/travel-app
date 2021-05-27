@@ -97,6 +97,6 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   handleTrip[1].style.display = "block";
   
   document.getElementById("save-trip").addEventListener("click", function () {
-  persistance(dataObj);
+  persistance(dataObj, rtnDate);
   });
 }
