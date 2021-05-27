@@ -134,8 +134,8 @@ h4 {
     grid-area: container-all;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas: "form" "pic" "output";
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas: "form" "saved" "pic" "output";
     justify-content: center;
     border-radius: 25px;
     border: 2px solid white;
@@ -151,6 +151,13 @@ h4 {
   box-shadow: 0 0 15px -2px #444444;
   border-bottom: none;
   background: black; }
+
+#saved-div {
+  grid-area: saved; }
+
+#saved-div #saved-header {
+  margin-left: 5vw;
+  margin-top: 2vh; }
 
 #output {
   grid-area: output; }
