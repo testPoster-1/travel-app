@@ -180,10 +180,13 @@ h4 {
 }
 }
 
+.hidden {
+  display: none;
+}
+
 .trip-info {
   color: black;
   border: 1px solid black;
-  display: none;
   margin-top: 4vh;
 }
 

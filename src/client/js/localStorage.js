@@ -20,10 +20,12 @@ export const persistance = (tripData) => {
   }
   if (add == true) {
     console.log("it's there");
+    document.getElementById("save-info").innerHTML = "This trip was previously saved";
   } else {
     tripArray.push(tripData);
     localStorage.setItem('trips', JSON.stringify(tripArray));
     const data = JSON.parse(localStorage.getItem('trips'));
     console.log(data);
+    document.getElementById("save-info").innerHTML = "Trip saved!";
   }
 }

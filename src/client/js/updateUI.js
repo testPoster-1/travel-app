@@ -4,15 +4,18 @@ import { persistance } from "./localStorage";
 export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
   
-
+ 
   let length = vacayLength(userDate, rtnDate);
   let outputName = document.getElementById("outputName");
   let tripInfo = document.getElementById("tripInfo");
   let outputWeather = document.getElementById("outputWeather");
+  
   document.getElementById("accordion-holder").innerHTML = "";
   outputName.innerHTML = "";
   tripInfo.innerHTML = "";
   outputWeather.innerHTML = "";
+  document.getElementById("save-info").innerHTML = "";
+  
 
   let preLoader = document.getElementById("pre-loader-holder");
   imgHolder.style.backgroundImage = `url(${dataObj.fetchedData.pixURL})`;
@@ -20,7 +23,9 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   preLoader.classList.remove("pre-loader");
   let formatDate;
   let formatRtn;
-
+  let handleTrip = document.getElementsByClassName("trip-info");
+  handleTrip[0].classList.toggle("hidden");
+  handleTrip[1].classList.toggle("hidden");
   for (let item in dataObj.newWeatherEntry) {
 
 //--------------dynamically create images from images within a folder----------------------
@@ -92,9 +97,7 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   outputName.innerHTML = `Hi, ${userName}`;
   tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   outputWeather.innerHTML = `Weather Data`;
-  let handleTrip = document.getElementsByClassName("trip-info");
-  handleTrip[0].style.display = "block";
-  handleTrip[1].style.display = "block";
+
   
   document.getElementById("save-trip").addEventListener("click", function () {
   persistance(dataObj, rtnDate);

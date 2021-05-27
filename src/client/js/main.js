@@ -18,6 +18,14 @@ export const handleSubmit = (e) => {
   let userCountry = document.getElementById("country").value;
   let userDest = (`${userCity},${userState},${userCountry}`); 
   let outputName = document.getElementById("outputName");
+
+  let handleTrip = document.getElementsByClassName("trip-info");
+  if (!handleTrip[0].classList.contains("hidden") && !handleTrip[1].classList.contains("hidden")) {
+    handleTrip[0].classList.toggle("hidden");
+    handleTrip[1].classList.toggle("hidden");
+  }
+ 
+
   console.log("output name: " + outputName);
   let tripInfo = document.getElementById("tripInfo");
   let outputWeather = document.getElementById("outputWeather");
@@ -25,6 +33,7 @@ export const handleSubmit = (e) => {
   outputName.innerHTML = "";
   tripInfo.innerHTML = "";
   outputWeather.innerHTML = "";
+
   
   const imgHolder = document.querySelector("#img-holder");
   imgHolder.style.backgroundImage = ``;
