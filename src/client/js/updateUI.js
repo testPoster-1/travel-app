@@ -23,9 +23,6 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   preLoader.classList.remove("pre-loader");
   let formatDate;
   let formatRtn;
-  let handleTrip = document.getElementsByClassName("trip-info");
-  handleTrip[0].classList.toggle("hidden");
-  handleTrip[1].classList.toggle("hidden");
   for (let item in dataObj.newWeatherEntry) {
 
 //--------------dynamically create images from images within a folder----------------------
