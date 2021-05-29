@@ -2,6 +2,7 @@ import {handleSubmit} from "./js/main";
 import { updateUI } from "./js/updateUI";
 require("./styles/styles.css");
 
+// localStorage.clear();
 if (localStorage.getItem('trips')) {
   for (let i = 0; i < JSON.parse(localStorage.getItem("trips")).length; i++) { //NOTE: need to do JSON.parse to get the length into a num versus a string 
     let savedData = JSON.parse(localStorage.getItem("trips")); 
@@ -16,8 +17,8 @@ if (localStorage.getItem('trips')) {
     savedBtn.addEventListener("click", function (e) {
       updateUI(savedData[i]);
       document.getElementById("save-trip").classList.add("hidden");
-      if (document.getElementById("delete-trip").classList.contains("hidden")) {
-        document.getElementById("delete-trip").classList.toggle("hidden")
+      if (document.getElementById(`del-button${i}`).classList.contains("hidden")) {
+        document.getElementById(`del-button${i}`).classList.toggle("hidden")
       };//if delete button does contain the class hidden, then toggle hidden class so that delete only shows up if we are looking at saved data. See the opposite if statement in the main.js
     })
   }

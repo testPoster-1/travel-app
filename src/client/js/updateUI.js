@@ -108,9 +108,16 @@ export const updateUI = (tripObj) => {
     persistance(tripObj);
   });
 
+  let newDelBtn = document.createElement("button");
+  newDelBtn.id = `delete-${tripObj.dataObj.fetchedData.city}`;
+  newDelBtn.classList.add("btn-style");
+  newDelBtn.innerHTML = `Delete ${tripObj.dataObj.fetchedData.city} Info`;
+  document.getElementById("result-holder").appendChild(newDelBtn);
+  
   if (tripArray) {
     for (let x = 0; x < JSON.parse(tripArray).length; x++) {
-      document.getElementById("delete-trip").addEventListener("click", function () {
+      
+      document.getElementById(`del-button${x}`).addEventListener("click", function () {
         deleteTrip(tripArray, x);
       })
     }
