@@ -15,17 +15,13 @@ if (localStorage.getItem('trips')) {
     document.getElementById("saved-cities").appendChild(savedBtn);
 
     savedBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      console.log(savedBtn.id);
-      console.log(savedData[i]);
       updateUI(savedData[i].dataObj, savedData[i].userDate, savedData[i].userName, savedData[i].dataObj.fetchedData.city, savedData[i].rtnDate);
+      document.getElementById("save-trip").classList.add("hidden");
+      if (document.getElementById("delete-trip").classList.contains("hidden")) {
+        document.getElementById("delete-trip").classList.toggle("hidden")
+      };//if delete button does contain the class hidden, then toggle hidden class so that delete only shows up if we are looking at saved data. See the opposite if statement in the main.js
     })
-    console.log(savedData[i].dataObj, savedData[i].userDate, savedData[i].userName, savedData[i].dataObj.fetchedData.city, savedData[i].rtnDate);
   }
-
-  
- // dataObj, userDate, userName, userCity, rtnDate
-
 } else {
   document.getElementById("save-text").innerHTML = "You have no saved trips";
 };

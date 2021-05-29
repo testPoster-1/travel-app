@@ -21,11 +21,9 @@ export const handleSubmit = (e) => {
   
   document.getElementById("save-info").innerHTML = "";
 
-  // let handleTrip = document.getElementsByClassName("trip-info");
-  // // if (handleTrip[0].classList.contains("hidden") && handleTrip[1].classList.contains("hidden")) {
-  //   handleTrip[0].classList.toggle("hidden");
-  //   handleTrip[1].classList.toggle("hidden");
-  // //}
+  if (!document.getElementById("delete-trip").classList.contains("hidden")) {
+    document.getElementById("delete-trip").classList.toggle("hidden")
+  };  //if delete button does not contain the class hidden, then add hidden class so that delete does not show up if we are not looking at saved data. See the opposite if statement in the index.js
 
   console.log("output name: " + outputName);
   let tripInfo = document.getElementById("tripInfo");
