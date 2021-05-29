@@ -109,6 +109,9 @@ h4 {
 
 #saved-div {
   grid-area: saved;
+  #saved-cities {
+    display: flex;
+  }
   #saved-header {
     margin-left: 5vw;
     margin-top: 2vh;
