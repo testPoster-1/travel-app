@@ -1,11 +1,15 @@
 import { vacayLength } from "./InputTesting/dateValidation";
 import { persistance } from "./localStorage";
 
-export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
+export const updateUI = (tripObj) => {
+//export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
   
+  console.log(tripObj);
+
+  
   const imgHolder = document.querySelector("#img-holder");
-  let length = vacayLength(userDate, rtnDate);
+  let length = vacayLength(tripObj.userDate, tripObj.rtnDate);
   let outputName = document.getElementById("outputName");
   let tripInfo = document.getElementById("tripInfo");
   let outputWeather = document.getElementById("outputWeather");
@@ -20,24 +24,24 @@ export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
   
 
   let preLoader = document.getElementById("pre-loader-holder");
-  imgHolder.style.backgroundImage = `url(${dataObj.fetchedData.pixURL})`;
+  imgHolder.style.backgroundImage = `url(${tripObj.dataObj.fetchedData.pixURL})`;
   document.getElementById("text").innerHTML = "";
   preLoader.classList.remove("pre-loader");
   let formatDate;
   let formatRtn;
-  for (let item in dataObj.newWeatherEntry) {
+  for (let item in tripObj.dataObj.newWeatherEntry) {
 
 //--------------dynamically create images from images within a folder----------------------
     let myImg = require.context("../images/icons"); //require.context and then add in the folder that contains the images
-    let weatherIcon = myImg(`./${dataObj.newWeatherEntry[item].icon}.png`).default; //note the .default
+    let weatherIcon = myImg(`./${tripObj.dataObj.newWeatherEntry[item].icon}.png`).default; //note the .default
     let newImg = document.createElement("img");
     newImg.src = weatherIcon;
     newImg.classList.add("icon-size");
 //-----------------------------------------------------------------------------------------
 
 //-----------------------------------Create collapsible button----------------------------
-    let dayCount = new Date(`${userDate} 00:00`);
-    let rtn = new Date(`${rtnDate} 00:00`);
+    let dayCount = new Date(`${tripObj.userDate} 00:00`);
+    let rtn = new Date(`${tripObj.rtnDate} 00:00`);
     formatDate = (dayCount.getMonth() + 1) + '/' + dayCount.getDate() + '/' + dayCount.getFullYear();
     formatRtn = (rtn.getMonth() + 1) + '/' + rtn.getDate() + '/' + rtn.getFullYear();
     dayCount.setDate(parseInt(dayCount.getDate()) + parseInt(item));
@@ -51,8 +55,8 @@ export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
     newDiv.classList.add("panel");
 //----------------------------------------------------------------------------------------
 
-    for (let element in dataObj.newWeatherEntry[item]) {
-      let weatherElem = dataObj.newWeatherEntry[item][element];
+    for (let element in tripObj.dataObj.newWeatherEntry[item]) {
+      let weatherElem = tripObj.dataObj.newWeatherEntry[item][element];
       if (element != "icon") {
       element = element[0].toUpperCase() + element.slice(1); //capitalize the first letter 
       let newP = document.createElement("p");
@@ -93,12 +97,12 @@ export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
     });
   }
 
-  outputName.innerHTML = `Hi, ${userName}`;
-  tripInfo.innerHTML = `For your trip to ${userCity} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
+  outputName.innerHTML = `Hi, ${tripObj.userName}`;
+  tripInfo.innerHTML = `For your trip to ${tripObj.dataObj.fetchedData.city} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   outputWeather.innerHTML = `Weather Data`;
 
   
   document.getElementById("save-trip").addEventListener("click", function () {
-  persistance(dataObj, userDate, userName, rtnDate);
+  persistance(tripObj);
   });
 }
