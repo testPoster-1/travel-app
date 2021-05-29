@@ -1,4 +1,3 @@
-import { deleteTrip } from "./js/deleteTrip";
 import {handleSubmit} from "./js/main";
 import { updateUI } from "./js/updateUI";
 require("./styles/styles.css");
@@ -20,10 +19,6 @@ if (localStorage.getItem('trips')) {
       if (document.getElementById("delete-trip").classList.contains("hidden")) {
         document.getElementById("delete-trip").classList.toggle("hidden")
       };//if delete button does contain the class hidden, then toggle hidden class so that delete only shows up if we are looking at saved data. See the opposite if statement in the main.js
-
-      document.getElementById("delete-trip").addEventListener("click", function () {
-        deleteTrip(i);
-      })
     })
   }
 } else {

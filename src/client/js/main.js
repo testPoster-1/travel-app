@@ -1,4 +1,3 @@
-
 import { updateUI } from "./updateUI";
 import { timeDifference } from "./InputTesting/dateValidation";
 import { nameValidation } from "./InputTesting/nameValidation";
@@ -18,7 +17,7 @@ export const handleSubmit = (e) => {
   let userCountry = document.getElementById("country").value;
   let userDest = (`${userCity},${userState},${userCountry}`); 
   let outputName = document.getElementById("outputName");
-
+  
   document.getElementById("save-info").innerHTML = "";
 
   if (!document.getElementById("delete-trip").classList.contains("hidden")) {
@@ -75,11 +74,15 @@ const postData = async (userDest, interval, userName, userDate, rtnDate) => {
   });
   let dataObj = await getData.json();
   console.log(dataObj.newWeatherEntry);
-
-  return (dataObj);
+  console.log(`This is my object I am returning: ${(dataObj)}`);
+  
+  let tripObj = {
+    dataObj: dataObj, 
+    userName: userName, 
+    userDate: userDate, 
+    rtnDate: rtnDate
+  }
+  console.log(tripObj);
+  
+  return (tripObj);
 }
-
-// let deleteBtn = document.getElementById("delete-trip");
-// deleteBtn.addEventListener("click", deleteTrip);
-
-

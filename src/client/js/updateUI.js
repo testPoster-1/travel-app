@@ -7,8 +7,7 @@ export const updateUI = (tripObj) => {
   //export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
 
-  console.log("this is my tripobj: " + JSON.stringify(tripObj));
-
+  console.log(tripObj);
   let tripArray = localStorage.getItem("trips");
 
   const imgHolder = document.querySelector("#img-holder");
@@ -27,16 +26,16 @@ export const updateUI = (tripObj) => {
 
 
   let preLoader = document.getElementById("pre-loader-holder");
-  imgHolder.style.backgroundImage = `url(${tripObj.fetchedData.pixURL})`;
+  imgHolder.style.backgroundImage = `url(${tripObj.dataObj.fetchedData.pixURL})`;
   document.getElementById("text").innerHTML = "";
   preLoader.classList.remove("pre-loader");
   let formatDate;
   let formatRtn;
-  for (let item in tripObj.newWeatherEntry) {
+  for (let item in tripObj.dataObj.newWeatherEntry) {
 
     //--------------dynamically create images from images within a folder----------------------
     let myImg = require.context("../images/icons"); //require.context and then add in the folder that contains the images
-    let weatherIcon = myImg(`./${tripObj.newWeatherEntry[item].icon}.png`).default; //note the .default
+    let weatherIcon = myImg(`./${tripObj.dataObj.newWeatherEntry[item].icon}.png`).default; //note the .default
     let newImg = document.createElement("img");
     newImg.src = weatherIcon;
     newImg.classList.add("icon-size");
@@ -58,8 +57,8 @@ export const updateUI = (tripObj) => {
     newDiv.classList.add("panel");
     //----------------------------------------------------------------------------------------
 
-    for (let element in tripObj.newWeatherEntry[item]) {
-      let weatherElem = tripObj.newWeatherEntry[item][element];
+    for (let element in tripObj.dataObj.newWeatherEntry[item]) {
+      let weatherElem = tripObj.dataObj.newWeatherEntry[item][element];
       if (element != "icon") {
         element = element[0].toUpperCase() + element.slice(1); //capitalize the first letter 
         let newP = document.createElement("p");

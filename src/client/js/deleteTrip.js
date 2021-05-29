@@ -1,3 +1,5 @@
+import { persistance } from "./localStorage";
+
 export const deleteTrip = (tripArray, i) => {
   let obj = JSON.parse(tripArray); //tripArray was sent over as a string since it is localstorage (localstorage is always string). JSON.parse turns it into an obj we can iterate through.
   // let deleteTrip = JSON.parse(localStorage.getItem("trips"))[i];
