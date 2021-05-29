@@ -61,7 +61,7 @@ export const handleSubmit = (e) => {
     console.log("all is true")
     postData(userDest, interval)
       //.then (coords => weatherbitFetch(coords));
-      .then((dataObj) => updateUI(dataObj, imgHolder, userDate, userName, userCity, rtnDate));
+      .then((dataObj) => updateUI(dataObj, userDate, userName, userCity, rtnDate));
   }
 }
 

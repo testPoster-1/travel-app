@@ -1,6 +1,11 @@
-export const persistance = (tripData) => {
+export const persistance = (dataObj, userDate, userName, rtnDate) => {
   console.log("persistance ran");
 
+  let trip = {
+    dataObj, userDate, userName, rtnDate
+  }
+
+  console.log(trip);
   //tripArray = [];
 
   let tripArray = localStorage.getItem('trips') ? JSON.parse(localStorage.getItem('trips')) : []; //ternary operator: if localstorage.getitem(items) is true, then triparray will equal JSON.parse(localStorage.getItem('items'), if it's false, then triparry will be equal to []. 
@@ -8,10 +13,8 @@ export const persistance = (tripData) => {
   let add = addData();
   function addData() {
     for (let trip in tripArray) {
-      console.log(tripArray[trip].fetchedData.city);
-      console.log(tripData.fetchedData.city);
-      let arraycity = tripArray[trip].fetchedData.city;
-      if (arraycity == tripData.fetchedData.city) {
+      let arraycity = tripArray[trip].dataObj.fetchedData.city;
+      if (arraycity == dataObj.fetchedData.city) {
         console.log("I'm there");
         return true;
       }
@@ -22,7 +25,7 @@ export const persistance = (tripData) => {
     console.log("it's there");
     document.getElementById("save-info").innerHTML = "This trip was previously saved";
   } else {
-    tripArray.push(tripData);
+    tripArray.push(trip);
     localStorage.setItem('trips', JSON.stringify(tripArray));
     const data = JSON.parse(localStorage.getItem('trips'));
     console.log(data);

@@ -1,10 +1,10 @@
 import { vacayLength } from "./InputTesting/dateValidation";
 import { persistance } from "./localStorage";
 
-export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDate) => {
+export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
   
- 
+  const imgHolder = document.querySelector("#img-holder");
   let length = vacayLength(userDate, rtnDate);
   let outputName = document.getElementById("outputName");
   let tripInfo = document.getElementById("tripInfo");
@@ -99,6 +99,6 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
 
   
   document.getElementById("save-trip").addEventListener("click", function () {
-  persistance(dataObj, rtnDate);
+  persistance(dataObj, userDate, userName, rtnDate);
   });
 }
