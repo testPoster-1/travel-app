@@ -9,9 +9,7 @@ export const updateUI = (dataObj, imgHolder, userDate, userName, userCity, rtnDa
   let outputName = document.getElementById("outputName");
   let tripInfo = document.getElementById("tripInfo");
   let outputWeather = document.getElementById("outputWeather");
-  let handleTrip = document.getElementsByClassName("trip-info");
-      handleTrip[0].classList.toggle("hidden");
-    handleTrip[1].classList.toggle("hidden");
+  document.getElementById("save-trip").classList.toggle("hidden");
   
   
   document.getElementById("accordion-holder").innerHTML = "";

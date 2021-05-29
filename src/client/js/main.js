@@ -21,11 +21,11 @@ export const handleSubmit = (e) => {
   
   document.getElementById("save-info").innerHTML = "";
 
-  let handleTrip = document.getElementsByClassName("trip-info");
-  if (!handleTrip[0].classList.contains("hidden") && !handleTrip[1].classList.contains("hidden")) {
-    handleTrip[0].classList.toggle("hidden");
-    handleTrip[1].classList.toggle("hidden");
-  }
+  // let handleTrip = document.getElementsByClassName("trip-info");
+  // // if (handleTrip[0].classList.contains("hidden") && handleTrip[1].classList.contains("hidden")) {
+  //   handleTrip[0].classList.toggle("hidden");
+  //   handleTrip[1].classList.toggle("hidden");
+  // //}
 
   console.log("output name: " + outputName);
   let tripInfo = document.getElementById("tripInfo");
@@ -34,7 +34,9 @@ export const handleSubmit = (e) => {
   outputName.innerHTML = "";
   tripInfo.innerHTML = "";
   outputWeather.innerHTML = "";
-
+  if (!document.getElementById("save-trip").classList.contains("hidden")){
+    document.getElementById("save-trip").classList.toggle("hidden");
+  }
   
   const imgHolder = document.querySelector("#img-holder");
   imgHolder.style.backgroundImage = ``;
@@ -78,7 +80,7 @@ const postData = async (userDest, interval) => {
   return (dataObj);
 }
 
-let deleteBtn = document.getElementById("delete-trip");
-deleteBtn.addEventListener("click", deleteTrip);
+// let deleteBtn = document.getElementById("delete-trip");
+// deleteBtn.addEventListener("click", deleteTrip);
 
 

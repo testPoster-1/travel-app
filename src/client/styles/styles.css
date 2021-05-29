@@ -153,14 +153,21 @@ h4 {
   background: black; }
 
 #saved-div {
-  grid-area: saved; }
+  grid-area: saved;
+  width: 100%; }
 
 #saved-div #saved-cities {
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap; }
 
 #saved-div #saved-header {
-  margin-left: 5vw;
   margin-top: 2vh; }
+
+#saved-div .trip-info {
+  color: black;
+  border: 1px solid black;
+  margin-top: 2vh;
+  margin-bottom: 0; }
 
 #output {
   grid-area: output; }

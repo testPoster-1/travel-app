@@ -109,13 +109,20 @@ h4 {
 
 #saved-div {
   grid-area: saved;
+  width: 100%;
   #saved-cities {
     display: flex;
+    flex-wrap: wrap;
   }
   #saved-header {
-    margin-left: 5vw;
     margin-top: 2vh;
   }
+  .trip-info {
+    color: black;
+    border: 1px solid black;
+    margin-top: 2vh;
+    margin-bottom: 0;
+  }  
 }
 
 #output {
