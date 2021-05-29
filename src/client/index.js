@@ -3,9 +3,10 @@ import {handleSubmit} from "./js/main";
 import { updateUI } from "./js/updateUI";
 require("./styles/styles.css");
 
-if (!localStorage.getItem('trips')) {
-  for (let i = 0; i < JSON.parse(localStorage.getItem("trips")).length; i++) { //need to JSON.parse the local storage first, then find the length.  
-    let savedData = JSON.parse(localStorage.getItem("trips")); //json.parse retrieves the item from storage and converts it to object again 
+if (localStorage.getItem('trips')) {
+  for (let i = 0; i < JSON.parse(localStorage.getItem("trips")).length; i++) { //NOTE: need to do JSON.parse to get the length into a num versus a string 
+    let savedData = JSON.parse(localStorage.getItem("trips")); 
+    console.log("savedData = " + savedData[i]);
     console.log(savedData[i].dataObj.fetchedData.city);
     let savedBtn = document.createElement("button");
     savedBtn.classList.add("btn-style", "trip-info");
@@ -14,7 +15,7 @@ if (!localStorage.getItem('trips')) {
     document.getElementById("saved-cities").appendChild(savedBtn);
 
     savedBtn.addEventListener("click", function (e) {
-      updateUI(savedData[i].dataObj, savedData[i].userDate, savedData[i].userName, savedData[i].dataObj.fetchedData.city, savedData[i].rtnDate);
+      updateUI(savedData[i]);
       document.getElementById("save-trip").classList.add("hidden");
       if (document.getElementById("delete-trip").classList.contains("hidden")) {
         document.getElementById("delete-trip").classList.toggle("hidden")

@@ -57,13 +57,14 @@ export const handleSubmit = (e) => {
 
   
     console.log("all is true")
-    postData(userDest, interval)
+    postData(userDest, interval, userName, userDate, rtnDate)
       //.then (coords => weatherbitFetch(coords));
-      .then((dataObj) => updateUI(dataObj, userDate, userName, userCity, rtnDate));
+      .then((tripObj) => updateUI(tripObj));
   }
 }
 
-const postData = async (userDest, interval) => {
+const postData = async (userDest, interval, userName, userDate, rtnDate) => {
+  console.log("user Date: " + userDate);
   let getData = await fetch("http://localhost:2000/fetchData", {//local server is on port 2000. See POST on server.js with fetchCoords as path
     method: "POST",
     credentials: "same-origin",
