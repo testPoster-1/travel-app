@@ -3,14 +3,21 @@ import { persistance } from "./localStorage";
 
 export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
-  
+
+  let tripObj = {
+    dataObj: dataObj, 
+    userDate: userDate, 
+    userName: userName, 
+    rtnDate: rtnDate, 
+    userCity: userCity
+  };
+
   const imgHolder = document.querySelector("#img-holder");
   let length = vacayLength(userDate, rtnDate);
   let outputName = document.getElementById("outputName");
   let tripInfo = document.getElementById("tripInfo");
   let outputWeather = document.getElementById("outputWeather");
   document.getElementById("save-trip").classList.toggle("hidden");
-  
   
   document.getElementById("accordion-holder").innerHTML = "";
   outputName.innerHTML = "";

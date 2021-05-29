@@ -1,10 +1,9 @@
+import { deleteTrip } from "./js/deleteTrip";
 import {handleSubmit} from "./js/main";
 import { updateUI } from "./js/updateUI";
 require("./styles/styles.css");
 
-if (localStorage.getItem('trips')) {
-  console.log(JSON.parse(localStorage.getItem("trips")).length);
-  console.log(localStorage.length);
+if (!localStorage.getItem('trips')) {
   for (let i = 0; i < JSON.parse(localStorage.getItem("trips")).length; i++) { //need to JSON.parse the local storage first, then find the length.  
     let savedData = JSON.parse(localStorage.getItem("trips")); //json.parse retrieves the item from storage and converts it to object again 
     console.log(savedData[i].dataObj.fetchedData.city);
@@ -20,6 +19,10 @@ if (localStorage.getItem('trips')) {
       if (document.getElementById("delete-trip").classList.contains("hidden")) {
         document.getElementById("delete-trip").classList.toggle("hidden")
       };//if delete button does contain the class hidden, then toggle hidden class so that delete only shows up if we are looking at saved data. See the opposite if statement in the main.js
+
+      document.getElementById("delete-trip").addEventListener("click", function () {
+        deleteTrip(i);
+      })
     })
   }
 } else {

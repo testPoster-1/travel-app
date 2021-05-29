@@ -18,7 +18,7 @@ export const handleSubmit = (e) => {
   let userCountry = document.getElementById("country").value;
   let userDest = (`${userCity},${userState},${userCountry}`); 
   let outputName = document.getElementById("outputName");
-  
+
   document.getElementById("save-info").innerHTML = "";
 
   if (!document.getElementById("delete-trip").classList.contains("hidden")) {
@@ -74,7 +74,7 @@ const postData = async (userDest, interval) => {
   });
   let dataObj = await getData.json();
   console.log(dataObj.newWeatherEntry);
-  console.log(`This is my object I am returning: ${(dataObj)}`);
+
   return (dataObj);
 }
 
