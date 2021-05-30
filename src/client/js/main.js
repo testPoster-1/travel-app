@@ -9,6 +9,7 @@ import {deleteTrip} from "./deleteTrip";
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
   document.getElementById("err-holder").innerHTML = "";
+  document.getElementById("delete-holder").innerHTML = "";
   let userDate = document.getElementById("leave-date").value;
   let rtnDate = document.getElementById("rtn-date").value;
   let userName = document.getElementById("name").value;

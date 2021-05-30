@@ -108,20 +108,18 @@ export const updateUI = (tripObj) => {
     persistance(tripObj);
   });
 
+  if (tripObj.delBtn) {
   let newDelBtn = document.createElement("button");
-  newDelBtn.id = `delete-${tripObj.dataObj.fetchedData.city}`;
-  newDelBtn.classList.add("btn-style");
+  newDelBtn.id = `delete${tripObj.delBtn}`
+  newDelBtn.classList.add("btn-style", "del");
   newDelBtn.innerHTML = `Delete ${tripObj.dataObj.fetchedData.city} Info`;
-  document.getElementById("result-holder").appendChild(newDelBtn);
-  
-  if (tripArray) {
-    for (let x = 0; x < JSON.parse(tripArray).length; x++) {
-      
-      document.getElementById(`del-button${x}`).addEventListener("click", function () {
-        deleteTrip(tripArray, x);
-      })
-    }
+  document.getElementById("delete-holder").appendChild(newDelBtn);
+  document.getElementById(`delete${tripObj.delBtn}`).addEventListener("click", function () {
+    deleteTrip(tripArray, tripObj.delBtn)
+  })
   } else {
-    console.log("array is empty");
+    console.log("Trip has not been saved");
   }
+
+  
 }
