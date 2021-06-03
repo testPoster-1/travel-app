@@ -3,6 +3,7 @@ import { updateUI } from "./js/updateUI";
 require("./styles/styles.css");
 
 //localStorage.clear();
+// console.log(JSON.parse(localStorage.getItem('trips')));
 if (JSON.parse(localStorage.getItem('trips'))) {
   for (let i = 0; i < JSON.parse(localStorage.getItem("trips")).length; i++) { //NOTE: need to do JSON.parse to get the length into a num versus a string 
     let savedData = JSON.parse(localStorage.getItem("trips")); 
@@ -23,6 +24,7 @@ if (JSON.parse(localStorage.getItem('trips'))) {
     })
   }
 } else {
+  console.log("else ran");
   document.getElementById("save-text").innerHTML = "You have no saved trips";
 };
 const btn = document.getElementById("submit");
