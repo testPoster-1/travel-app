@@ -1,17 +1,23 @@
 import { timeDifference } from "../src/client/js/InputTesting/dateValidation";
 
-  let u = new Date();
-  let testDay = u.getDate();
-  let a = "";
+document.body.innerHTML = `
+    <div id="err-holder"></div>
+    <div id="img-holder"></div>
+  `; //creating the err-holder and img-holder divs just so that the jest can test them. These ids are used in the actual function, but Jest can't access them, need to create them here. 
+window.HTMLElement.prototype.scrollIntoView = function () { }; //scrollintoview is not in the JestDOM so not considered a function, so include this line to indicate that it is specifically a function. 
+
+let u = new Date();
+let testDay = u.getDate();
+let a = "";
 
 describe("Testing timeDifference function", () => {
   test("Calculate difference between dates", () => {
-    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay+1}`)).toBe(0); //input is same date as today
+    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 1}`)).toBe(3); //input is 6 days or less
   });
   test("Calculate difference between dates", () => {
-    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay-3}`)).toBe(-1); //input is in the past
+    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay - 3}`)).toBeFalse; //input is in the past
   });
   test("Calculate difference between dates", () => {
-    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay+7}`)).toBe(1); //input is in the future
+    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 7}`)).toBe(7); //input is 7
   });
 });

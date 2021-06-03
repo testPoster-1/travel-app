@@ -238,3 +238,6 @@ h4 {
   color: black;
   border: 1px solid black;
   margin-top: 4vh; }
+
+#delete-holder {
+  margin-top: 2vh; }

@@ -1,4 +1,5 @@
-export const timeDifference = (userDate, imgHolder) => {
+export const timeDifference = (userDate) => {
+  let imgHolder = document.querySelector("#img-holder");
   if (userDate) {
     let d = new Date(); //gets current date and time to compare against the user's date
     let inputDate = new Date(`${userDate} 00:00`); //new Date() assumes UTC time, need to add the 00:00 in the string to set user input to same time zone as "d"

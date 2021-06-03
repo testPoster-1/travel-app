@@ -3,8 +3,7 @@ import { updateUI } from "./js/updateUI";
 require("./styles/styles.css");
 
 //localStorage.clear();
-// console.log(JSON.parse(localStorage.getItem('trips')));
-if (JSON.parse(localStorage.getItem('trips'))) {
+if (JSON.parse(localStorage.getItem('trips')).length > 0) {
   for (let i = 0; i < JSON.parse(localStorage.getItem("trips")).length; i++) { //NOTE: need to do JSON.parse to get the length into a num versus a string 
     let savedData = JSON.parse(localStorage.getItem("trips")); 
     console.log("length: " + savedData.length);

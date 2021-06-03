@@ -39,9 +39,9 @@ export const handleSubmit = (e) => {
   const imgHolder = document.querySelector("#img-holder");
   imgHolder.style.backgroundImage = ``;
 
-  let interval = timeDifference(userDate, imgHolder);
+  let interval = timeDifference(userDate);
   let name = nameValidation(userName);
-  let destination = destValidation(userCity, imgHolder);
+  let destination = destValidation(userCity);
 
   if (name && interval && destination) {
     imgHolder.style.height = "30vh";

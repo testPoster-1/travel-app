@@ -1,10 +1,9 @@
-export const destValidation = (userCity, imgHolder) => {
-  console.log(userCity);
-
+export const destValidation = (userCity) => {
+  let imgHolder = document.querySelector("#img-holder");
   if (userCity) {
     return true;
   } else {
-    imgHolder.scrollIntoView({
+      imgHolder.scrollIntoView({
       block: "center",
       behaviour: "smooth",
       alignToTop: false, 
