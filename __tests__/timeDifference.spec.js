@@ -12,12 +12,21 @@ let a = "";
 
 describe("Testing timeDifference function", () => {
   test("Calculate difference between dates", () => {
-    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 1}`)).toBe(3); //input is 6 days or less
+    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 1}`, `${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 2}` )).toBe(3); //input is 6 days or less
   });
   test("Calculate difference between dates", () => {
-    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay - 3}`)).toBeFalse; //input is in the past
+    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay - 3}`, `${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 1}`)).toBeFalse; //input is in the past
   });
   test("Calculate difference between dates", () => {
-    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 7}`)).toBe(7); //input is 7
+    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 7}`, `${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 8}`)).toBe(7); //input is 7
+  });
+  test("Calculate difference between dates", () => {
+    expect(timeDifference(`${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 7}`, a)).toBeFalse; //input is 7
+  });
+  test("Calculate difference between dates", () => {
+    expect(timeDifference(a, `${u.getFullYear()}-${u.getMonth() + 1}-${testDay + 7}`)).toBeFalse; //input is 7
+  });
+  test("Calculate difference between dates", () => {
+    expect(timeDifference(a, a)).toBeFalse; //input is 7
   });
 });

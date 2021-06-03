@@ -1,6 +1,6 @@
-export const timeDifference = (userDate) => {
+export const timeDifference = (userDate, rtnDate) => {
   let imgHolder = document.querySelector("#img-holder");
-  if (userDate) {
+  if (userDate && rtnDate) {
     let d = new Date(); //gets current date and time to compare against the user's date
     let inputDate = new Date(`${userDate} 00:00`); //new Date() assumes UTC time, need to add the 00:00 in the string to set user input to same time zone as "d"
     let dateToday = (`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`); //Note +1 in order to get the actual month 
@@ -27,14 +27,13 @@ export const timeDifference = (userDate) => {
       return false;
     } 
   } else {
-    console.log("No date - please enter a date");
     imgHolder.scrollIntoView({
       block: "center",
       behaviour: "smooth",
       alignToTop: false, 
       inline: "nearest"
     });
-    document.getElementById("err-holder").innerHTML = "Please enter the date of when you are leaving."
+    document.getElementById("err-holder").innerHTML = "Please enter your leave and return dates."
     return false;
   }
 }

@@ -39,7 +39,7 @@ export const handleSubmit = (e) => {
   const imgHolder = document.querySelector("#img-holder");
   imgHolder.style.backgroundImage = ``;
 
-  let interval = timeDifference(userDate);
+  let interval = timeDifference(userDate, rtnDate);
   let name = nameValidation(userName);
   let destination = destValidation(userCity);
 
