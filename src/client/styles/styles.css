@@ -152,6 +152,10 @@ h4 {
   border-bottom: none;
   background: black; }
 
+@media (min-width: 451px) and (max-width: 750px) {
+  #entry-form {
+    height: 125vh; } }
+
 #saved-div {
   grid-area: saved; }
 
@@ -189,7 +193,7 @@ h4 {
     color: #fff;
     margin: 0 10px 30px;
     border-bottom: 1px solid #fff;
-    width: 80%;
+    width: 85%;
     margin: 0 0 15px 20px; }
   .user-input label {
     color: #636161; }
@@ -199,6 +203,23 @@ h4 {
     color: #636161;
     margin: -4px;
     font-family: "Niramit", sans-serif; } }
+
+@media (min-width: 451px) and (max-width: 750px) {
+  .user-input {
+    color: #fff;
+    margin: 0 10px 30px;
+    border-bottom: 1px solid #fff;
+    width: 85%;
+    margin: 0 0 15px 20px; }
+  .user-input label {
+    color: #636161; }
+  .user-input input {
+    font-size: 1.2em; }
+  .user-input #state {
+    color: #636161;
+    margin: -4px;
+    font-family: "Niramit", sans-serif;
+    font-size: 1.1em; } }
 
 .no-focus {
   background: transparent;
@@ -221,6 +242,24 @@ h4 {
     color: white;
     font-size: 1em;
     margin-bottom: 5vh;
+    background-color: transparent;
+    border: 1px solid white; }
+  .btn-style:hover {
+    border: 1px solid white; }
+  .btn-style:active {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    background: white; } }
+
+@media (min-width: 451px) and (max-width: 750px) {
+  .btn-style {
+    display: flex;
+    margin: auto;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    margin-bottom: 10vh;
     background-color: transparent;
     border: 1px solid white; }
   .btn-style:hover {
