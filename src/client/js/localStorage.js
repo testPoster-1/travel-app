@@ -1,6 +1,6 @@
-export const persistance = (tripObj) => {
-  console.log("persistance ran");
+import { savedTrips } from "./savedTrips";
 
+export const persistance = (tripObj) => {
   let tripArray = localStorage.getItem('trips') ? JSON.parse(localStorage.getItem('trips')) : []; //ternary operator: if localstorage.getitem(items) is true, then triparray will equal JSON.parse(localStorage.getItem('items'), if it's false, then triparry will be equal to []. 
   console.log("triparray" + tripArray);
   console.log(typeof (tripArray));
@@ -35,6 +35,8 @@ export const persistance = (tripObj) => {
       tripArray.push(tripObj);
       localStorage.setItem("trips", JSON.stringify(tripArray));
       console.log("Trip obj: " + JSON.stringify(tripArray));
+      document.getElementById("saved-cities").innerHTML = "";
+      savedTrips(); 
     }
   
   return tripArray;
