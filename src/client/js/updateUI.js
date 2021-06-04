@@ -106,7 +106,6 @@ export const updateUI = (tripObj) => {
   } else {
     tripInfo.innerHTML = `For your trip to ${tripObj.dataObj.fetchedData.city} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   }
-  
   outputWeather.innerHTML = `Weather Data`;
 
 

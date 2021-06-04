@@ -354,12 +354,10 @@ h2 {
 
 @media only screen and (max-width: 1250px) {
   .btn-style:hover {
-    border: 1px solid white; }
+    background-color: white;
+    color: black; }
   .btn-style:active {
-    border: 1px solid black;
-    border-radius: 5px;
-    color: black;
-    background: white; } }
+    background: linear-gradient(135deg, orange, 65%, cyan); } }
 
 .hidden {
   display: none; }
