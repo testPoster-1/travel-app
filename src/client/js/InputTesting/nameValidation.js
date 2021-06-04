@@ -1,7 +1,7 @@
 export const nameValidation = (userName) => {
   if (!userName) {
-    console.log("You are anonymous");
-    return userName = "Anonymous";
+    let anon = "Anonymous"
+    return anon;
   } else {
     return userName;
   }

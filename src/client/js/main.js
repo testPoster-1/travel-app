@@ -41,6 +41,7 @@ export const handleSubmit = (e) => {
 
   let interval = timeDifference(userDate, rtnDate);
   let name = nameValidation(userName);
+  console.log("this is an anon name: " + name);
   let destination = destValidation(userCity);
 
   if (name && interval && destination) {
@@ -57,7 +58,7 @@ export const handleSubmit = (e) => {
 
   
     console.log("all is true")
-    postData(userDest, interval, userName, userDate, rtnDate)
+    postData(userDest, interval, name, userDate, rtnDate)
       //.then (coords => weatherbitFetch(coords));
       .then((tripObj) => updateUI(tripObj));
   }

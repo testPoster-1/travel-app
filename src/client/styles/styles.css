@@ -220,7 +220,7 @@ h2 {
 
 @media only screen and (max-width: 750px) and (min-width: 451px) and (max-width: 750px) {
   .user-input input {
-    font-size: 1.2em; } }
+    font-size: 1em; } }
 
 @media only screen and (max-width: 750px) {
   .user-input #state {
@@ -253,7 +253,7 @@ h2 {
 
 @media (min-width: 751px) and (max-width: 1200px) and (min-width: 451px) and (max-width: 750px) {
   .user-input input {
-    font-size: 1.2em; } }
+    font-size: 1em; } }
 
 @media (min-width: 751px) and (max-width: 1200px) {
   .user-input #state {
@@ -267,7 +267,7 @@ h2 {
 
 @media (min-width: 751px) and (max-width: 1200px) and (min-width: 751px) {
   .user-input #state {
-    font-size: 1.3em; } }
+    font-size: 1.2em; } }
 
 .no-focus {
   background: transparent;
