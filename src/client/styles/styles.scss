@@ -12,6 +12,19 @@ body {
   background-attachment: fixed;
 }
 
+p,
+input,
+label,
+h3, 
+h4 {
+  font-family: $Niramit;
+  margin: 0;
+}
+
+.center-text {
+  text-align: $centerTxt;
+}
+
 .accordion {
   background-color: #eee;
   color: #444;
@@ -32,19 +45,10 @@ button {
 h2 {
   font-family: $Koho;
   margin: 10px 0 0 0;
-}
-
-.center-text {
-  text-align: $centerTxt;
-}
-
-p,
-input,
-label,
-h3, 
-h4 {
-  font-family: $Niramit;
-  margin: 0;
+  @media (min-width: 451px) {
+    padding-top: 5vh;
+    font-size: 2em;
+  }
 }
 
 #subheader {
@@ -78,7 +82,6 @@ h4 {
 }
 
 #user-UI {
-  @media only screen and (max-width: 450px) {
   grid-area: container-all; 
   display: grid;
   grid-template-columns: 100%;
@@ -93,7 +96,6 @@ h4 {
   border: 2px solid white;
   margin-top: 2vh;
   padding-bottom: 4vh;
-  }
 }
 
 #entry-form {
@@ -108,6 +110,13 @@ h4 {
   @media (min-width: 451px) and (max-width: 750px) {
     height: 125vh;
   }
+  @media (min-width: 751px) and (max-width: 950px) {
+    height: 175vh;
+  }
+  @media (min-width: 951px){
+    height: 150vh;
+  }
+  
 }
 
 #saved-div {
@@ -145,8 +154,11 @@ h4 {
 }
 
 .user-input {
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 750px) {
   font-size: 0.8em;
+  @media (min-width: 451px) and (max-width: 1250px) {
+    font-size: 1em;
+  }
   color: $white;
   margin: 0 10px 30px;
   border-bottom: 1px solid $white; 
@@ -157,30 +169,48 @@ h4 {
   }
   input {
     font-size: 0.9em;
+    @media (min-width: 451px) and (max-width: 750px) {
+      font-size: 1.2em;
+    }
   }
   #state {
     color: rgb(99, 97, 97);
     margin: -4px;
     font-family: $Niramit;
+    @media (min-width: 451px) and (max-width: 750px) {
+      font-size: 1.1em;
+    }
   }
 }
-@media (min-width: 451px) and (max-width: 750px) {
+@media (min-width: 751px) and (max-width: 1200px) {
+  font-size: 0.8em;
+  @media (min-width: 451px) and (max-width: 1250px) {
+    font-size: 1em;
+  }
   color: $white;
   margin: 0 10px 30px;
   border-bottom: 1px solid $white; 
-  width: 85%; 
-  margin: 0 0 15px 20px;
+  width: 60%; 
+  margin: 10vh auto;
   label {
     color: rgb(99, 97, 97);
   }
   input {
-    font-size: 1.2em;
+    font-size: 0.9em;
+    @media (min-width: 451px) and (max-width: 750px) {
+      font-size: 1.2em;
+    }
   }
   #state {
     color: rgb(99, 97, 97);
     margin: -4px;
     font-family: $Niramit;
-    font-size: 1.1em;
+    @media (min-width: 451px) and (max-width: 750px) {
+      font-size: 1.2em;
+    }
+    @media (min-width: 751px) {
+      font-size: 1.3em;
+    }
   }
 }
 }
@@ -199,34 +229,17 @@ h4 {
   color: $white;
 }
 
-
 .btn-style {
-  @media only screen and (max-width: 450px) {
+  @media only screen and (max-width: 1250px) {
   display: flex;
   margin: auto;
   border-radius: 5px;
   color: white;
   font-size: 1em;
   margin-bottom: 5vh;
-  background-color: transparent;
-  border: 1px solid white;
-  &:hover {
-    border: 1px solid white; 
+  @media (min-width: 451px) and (max-width: 1250px)  {
+    margin-bottom: 10vh;
   }
-  &:active {
-    border: 1px solid black;
-    border-radius: 5px;
-    color: black;
-    background: white; 
-  }
-}
-@media (min-width: 451px) and (max-width: 750px)  {
-  display: flex;
-  margin: auto;
-  border-radius: 5px;
-  color: white;
-  font-size: 1em;
-  margin-bottom: 10vh;
   background-color: transparent;
   border: 1px solid white;
   &:hover {

@@ -75,6 +75,17 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed; }
 
+p,
+input,
+label,
+h3,
+h4 {
+  font-family: "Niramit", sans-serif;
+  margin: 0; }
+
+.center-text {
+  text-align: center; }
+
 .accordion {
   background-color: #eee;
   color: #444;
@@ -94,16 +105,10 @@ h2 {
   font-family: "KoHo", sans-serif;
   margin: 10px 0 0 0; }
 
-.center-text {
-  text-align: center; }
-
-p,
-input,
-label,
-h3,
-h4 {
-  font-family: "Niramit", sans-serif;
-  margin: 0; }
+@media (min-width: 451px) {
+  h2 {
+    padding-top: 5vh;
+    font-size: 2em; } }
 
 #subheader {
   margin-bottom: 15px; }
@@ -129,18 +134,17 @@ h4 {
   grid-template-areas: "container-all";
   justify-content: center; }
 
-@media only screen and (max-width: 450px) {
-  #user-UI {
-    grid-area: container-all;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(4, auto);
-    grid-template-areas: "form" "saved" "pic" "output";
-    justify-content: center;
-    border-radius: 25px;
-    border: 2px solid white;
-    margin-top: 2vh;
-    padding-bottom: 4vh; } }
+#user-UI {
+  grid-area: container-all;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas: "form" "saved" "pic" "output";
+  justify-content: center;
+  border-radius: 25px;
+  border: 2px solid white;
+  margin-top: 2vh;
+  padding-bottom: 4vh; }
 
 #entry-form {
   grid-area: form;
@@ -155,6 +159,14 @@ h4 {
 @media (min-width: 451px) and (max-width: 750px) {
   #entry-form {
     height: 125vh; } }
+
+@media (min-width: 751px) and (max-width: 950px) {
+  #entry-form {
+    height: 175vh; } }
+
+@media (min-width: 951px) {
+  #entry-form {
+    height: 150vh; } }
 
 #saved-div {
   grid-area: saved; }
@@ -187,39 +199,75 @@ h4 {
   background-position: center center;
   margin-top: 2vh; }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 750px) {
   .user-input {
     font-size: 0.8em;
     color: #fff;
     margin: 0 10px 30px;
     border-bottom: 1px solid #fff;
     width: 85%;
-    margin: 0 0 15px 20px; }
+    margin: 0 0 15px 20px; } }
+
+@media only screen and (max-width: 750px) and (min-width: 451px) and (max-width: 1250px) {
+  .user-input {
+    font-size: 1em; } }
+
+@media only screen and (max-width: 750px) {
   .user-input label {
     color: #636161; }
   .user-input input {
-    font-size: 0.9em; }
+    font-size: 0.9em; } }
+
+@media only screen and (max-width: 750px) and (min-width: 451px) and (max-width: 750px) {
+  .user-input input {
+    font-size: 1.2em; } }
+
+@media only screen and (max-width: 750px) {
   .user-input #state {
     color: #636161;
     margin: -4px;
     font-family: "Niramit", sans-serif; } }
 
-@media (min-width: 451px) and (max-width: 750px) {
+@media only screen and (max-width: 750px) and (min-width: 451px) and (max-width: 750px) {
+  .user-input #state {
+    font-size: 1.1em; } }
+
+@media (min-width: 751px) and (max-width: 1200px) {
   .user-input {
+    font-size: 0.8em;
     color: #fff;
     margin: 0 10px 30px;
     border-bottom: 1px solid #fff;
-    width: 85%;
-    margin: 0 0 15px 20px; }
+    width: 60%;
+    margin: 10vh auto; } }
+
+@media (min-width: 751px) and (max-width: 1200px) and (min-width: 451px) and (max-width: 1250px) {
+  .user-input {
+    font-size: 1em; } }
+
+@media (min-width: 751px) and (max-width: 1200px) {
   .user-input label {
     color: #636161; }
   .user-input input {
-    font-size: 1.2em; }
+    font-size: 0.9em; } }
+
+@media (min-width: 751px) and (max-width: 1200px) and (min-width: 451px) and (max-width: 750px) {
+  .user-input input {
+    font-size: 1.2em; } }
+
+@media (min-width: 751px) and (max-width: 1200px) {
   .user-input #state {
     color: #636161;
     margin: -4px;
-    font-family: "Niramit", sans-serif;
-    font-size: 1.1em; } }
+    font-family: "Niramit", sans-serif; } }
+
+@media (min-width: 751px) and (max-width: 1200px) and (min-width: 451px) and (max-width: 750px) {
+  .user-input #state {
+    font-size: 1.2em; } }
+
+@media (min-width: 751px) and (max-width: 1200px) and (min-width: 751px) {
+  .user-input #state {
+    font-size: 1.3em; } }
 
 .no-focus {
   background: transparent;
@@ -234,7 +282,7 @@ h4 {
   text-align: center;
   color: #fff; }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 1250px) {
   .btn-style {
     display: flex;
     margin: auto;
@@ -243,25 +291,13 @@ h4 {
     font-size: 1em;
     margin-bottom: 5vh;
     background-color: transparent;
-    border: 1px solid white; }
-  .btn-style:hover {
-    border: 1px solid white; }
-  .btn-style:active {
-    border: 1px solid black;
-    border-radius: 5px;
-    color: black;
-    background: white; } }
+    border: 1px solid white; } }
 
-@media (min-width: 451px) and (max-width: 750px) {
+@media only screen and (max-width: 1250px) and (min-width: 451px) and (max-width: 1250px) {
   .btn-style {
-    display: flex;
-    margin: auto;
-    border-radius: 5px;
-    color: white;
-    font-size: 1em;
-    margin-bottom: 10vh;
-    background-color: transparent;
-    border: 1px solid white; }
+    margin-bottom: 10vh; } }
+
+@media only screen and (max-width: 1250px) {
   .btn-style:hover {
     border: 1px solid white; }
   .btn-style:active {
