@@ -107,12 +107,15 @@ $bounce_height: 30px;
   }
   @media (min-width: 701px) {
     margin-left: 20vh;
+    margin-bottom: 0;
+    padding: 0; 
   }
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
   background-color: #ccc;
+  margin-bottom: 0;
 }
 
 .active:after {
@@ -125,6 +128,16 @@ $bounce_height: 30px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+  @media (min-width: 451px) and (max-width: 700px) {
+    width: 95%;
+  }
+  @media (min-width: 701px) {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    font-size: 1.2em;
+  }
 }
 
 #tripInfo {
