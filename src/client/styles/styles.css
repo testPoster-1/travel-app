@@ -44,6 +44,49 @@
   width: 13vw;
   margin-left: 2vw; }
 
+@media (min-width: 451px) and (max-width: 730px) {
+  .icon-size {
+    height: 15vh;
+    width: 15vw;
+    margin-left: 2vw; } }
+
+@media (min-width: 731px) and (max-width: 1000px) {
+  .icon-size {
+    height: 10vh;
+    width: 8vw;
+    margin-left: 2vw; } }
+
+@media (min-width: 1001px) {
+  .icon-size {
+    height: 10vh;
+    width: 6vw;
+    margin-left: 2vw; } }
+
+.accordion {
+  background-color: transparent;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid white;
+  outline: none;
+  transition: 0.4s; }
+
+@media (min-width: 451px) and (max-width: 700px) {
+  .accordion {
+    width: 95%;
+    display: flex;
+    margin: 2vh auto;
+    font-size: 1.2em; } }
+
+@media (min-width: 701px) {
+  .accordion {
+    width: 80%;
+    display: flex;
+    margin: 2vh auto;
+    font-size: 1.2em; } }
+
 .accordion:after {
   content: '\02795';
   /* Unicode character for "plus" sign (+) */
@@ -51,6 +94,14 @@
   color: #777;
   float: right;
   margin-left: 5px; }
+
+@media (min-width: 451px) and (max-width: 700px) {
+  .accordion:after {
+    margin-left: 10vh; } }
+
+@media (min-width: 701px) {
+  .accordion:after {
+    margin-left: 20vh; } }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
@@ -85,17 +136,6 @@ h4 {
 
 .center-text {
   text-align: center; }
-
-.accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s; }
 
 button {
   font-family: "KoHo", sans-serif;
@@ -197,7 +237,7 @@ h2 {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  margin-top: 2vh; }
+  margin-top: 5vh; }
 
 @media only screen and (max-width: 750px) {
   .user-input {
