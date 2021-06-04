@@ -68,6 +68,7 @@
   cursor: pointer;
   padding: 18px;
   width: 100%;
+  justify-content: center;
   text-align: left;
   border: 1px solid white;
   outline: none;
@@ -101,7 +102,6 @@
 
 @media (min-width: 701px) {
   .accordion:after {
-    margin-left: 20vh;
     margin-bottom: 0;
     padding: 0; } }
 

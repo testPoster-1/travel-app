@@ -99,8 +99,14 @@ export const updateUI = (tripObj) => {
     });
   }
 
+  
   outputName.innerHTML = `Hi, ${tripObj.userName}`;
-  tripInfo.innerHTML = `For your trip to ${tripObj.dataObj.fetchedData.city} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
+  if (length == 1) {
+    tripInfo.innerHTML = `For your trip to ${tripObj.dataObj.fetchedData.city} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} day:`;
+  } else {
+    tripInfo.innerHTML = `For your trip to ${tripObj.dataObj.fetchedData.city} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
+  }
+  
   outputWeather.innerHTML = `Weather Data`;
 
 
