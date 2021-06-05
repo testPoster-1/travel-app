@@ -36,7 +36,7 @@ export const handleSubmit = (e) => {
   let interval = timeDifference(userDate, rtnDate);
   let name = nameValidation(userName);
   let destination = destValidation(userCity);
-  
+
   if (name && interval && destination) {
     imgHolder.style.height = "30vh";
     imgHolder.scrollIntoView({
@@ -64,12 +64,19 @@ const postData = async (userDest, interval, userName, userDate, rtnDate) => {
     body: JSON.stringify({ userDest, interval }) //Notice this was sent as a stringified object
   });
   let dataObj = await getData.json();
-
-  let tripObj = {
-    dataObj: dataObj,
-    userName: userName,
-    userDate: userDate,
-    rtnDate: rtnDate
+  let tripObj = {};
+  if (dataObj.fetchedData.city == "noCity") {
+    console.log("All location input was undefined");
+    tripObj = {
+      dataObj: dataObj
+    }
+  } else {
+    tripObj = {
+      dataObj: dataObj,
+      userName: userName,
+      userDate: userDate,
+      rtnDate: rtnDate
+    }
   }
   return (tripObj);  //go back to original function call to use this returned data in the .then chain
 }
