@@ -120,7 +120,7 @@ export const updateUI = (tripObj) => {
   newDelBtn.innerHTML = `Delete ${tripObj.dataObj.fetchedData.city} Info`;
   document.getElementById("delete-holder").appendChild(newDelBtn);
   document.getElementById(`delete${tripObj.delBtn}`).addEventListener("click", function () {
-    deleteTrip(tripArray, tripObj.dataObj.fetchedData.city, tripObj.delBtn)
+    deleteTrip(tripArray, tripObj.dataObj.fetchedData.city)
   })
   } else {
     console.log("Trip has not been saved");

@@ -1,4 +1,4 @@
-export const deleteTrip = (tripArray, tripCity, i) => {
+export const deleteTrip = (tripArray, tripCity) => {
   let obj = JSON.parse(tripArray); //tripArray was sent over as a string since it is localstorage (localstorage is always string). JSON.parse turns it into an obj we can iterate through.
   // let deleteTrip = JSON.parse(localStorage.getItem("trips"))[i];
   console.log(obj, tripCity);
@@ -6,7 +6,8 @@ export const deleteTrip = (tripArray, tripCity, i) => {
     for (let item in obj) {
       console.log(obj[item]);
       if (tripCity == obj[item].dataObj.fetchedData.city) {
-        obj.splice(i,1);
+        console.log("cities matches");
+        obj.splice(item,1);
         tripArray = JSON.stringify(obj);
         localStorage.setItem("trips", JSON.stringify(obj));  
       console.log(obj);
