@@ -3,30 +3,28 @@ import { persistance } from "./localStorage";
 import { deleteTrip } from "./deleteTrip";
 
 export const updateUI = (tripObj) => {
-  //export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
 
-  console.log(tripObj);
   let tripArray = localStorage.getItem("trips");
 
   const imgHolder = document.querySelector("#img-holder");
+  const outputName = document.getElementById("outputName");
+  const tripInfo = document.getElementById("tripInfo");
+  const outputWeather = document.getElementById("outputWeather");
   let length = vacayLength(tripObj.userDate, tripObj.rtnDate);
-  let outputName = document.getElementById("outputName");
-  let tripInfo = document.getElementById("tripInfo");
-  let outputWeather = document.getElementById("outputWeather");
-  document.getElementById("save-trip").classList.toggle("hidden");
 
+  document.getElementById("save-trip").classList.toggle("hidden"); //show the save trip button when the use hits "get weather" button 
 
+  //clears dynmically created text to prepare for new input
   document.getElementById("accordion-holder").innerHTML = "";
   outputName.innerHTML = "";
   tripInfo.innerHTML = "";
   outputWeather.innerHTML = "";
   document.getElementById("save-info").innerHTML = "";
-
+  document.getElementById("text").innerHTML = "";
 
   let preLoader = document.getElementById("pre-loader-holder");
   imgHolder.style.backgroundImage = `url(${tripObj.dataObj.fetchedData.pixURL})`;
-  document.getElementById("text").innerHTML = "";
   preLoader.classList.remove("pre-loader");
   let formatDate;
   let formatRtn;
@@ -83,10 +81,8 @@ export const updateUI = (tripObj) => {
     }
   }
 
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
+  let acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
       this.classList.toggle("active");
       let panel = this.nextElementSibling;
@@ -98,7 +94,7 @@ export const updateUI = (tripObj) => {
     });
   }
 
-  
+  //----------------------Create text with user name and trip length--------------------------------------------
   outputName.innerHTML = `Hi, ${tripObj.userName}`;
   if (length == 1) {
     tripInfo.innerHTML = `For your trip to ${tripObj.dataObj.fetchedData.city} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} day:`;
@@ -106,25 +102,24 @@ export const updateUI = (tripObj) => {
     tripInfo.innerHTML = `For your trip to ${tripObj.dataObj.fetchedData.city} starting on ${formatDate}, ending on ${formatRtn}, and lasting ${length} days:`;
   }
   outputWeather.innerHTML = `Weather Data`;
-
+  //-----------------------------------------------------------------------------------------------------------
 
   document.getElementById("save-trip").addEventListener("click", function () {
     persistance(tripObj);
   });
 
+//----------------Dynamically create a UI delete button-----------------------------------------------
   if (tripObj.delBtn) {
-  let newDelBtn = document.createElement("button");
-  document.getElementById("delete-holder").innerHTML = ""; //If present, removes the previous delete button so that there is only one in view 
-  newDelBtn.id = `delete${tripObj.delBtn}`
-  newDelBtn.classList.add("btn-style", "del");
-  newDelBtn.innerHTML = `Delete ${tripObj.dataObj.fetchedData.city} Info`;
-  document.getElementById("delete-holder").appendChild(newDelBtn);
-  document.getElementById(`delete${tripObj.delBtn}`).addEventListener("click", function () {
-    deleteTrip(tripArray, tripObj.dataObj.fetchedData.city)
-  })
+    let newDelBtn = document.createElement("button");
+    document.getElementById("delete-holder").innerHTML = ""; //If present, removes the previous delete button so that there is only one in view 
+    newDelBtn.id = `delete${tripObj.delBtn}`
+    newDelBtn.classList.add("btn-style", "del");
+    newDelBtn.innerHTML = `Delete ${tripObj.dataObj.fetchedData.city} Info`;
+    document.getElementById("delete-holder").appendChild(newDelBtn);
+    document.getElementById(`delete${tripObj.delBtn}`).addEventListener("click", function () {
+      deleteTrip(tripArray, tripObj.dataObj.fetchedData.city)
+    })
   } else {
-    console.log("Trip has not been saved");
+    console.log("No delete button was created");
   }
-
-  
 }

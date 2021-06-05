@@ -2,8 +2,6 @@ import { savedTrips } from "./savedTrips";
 
 export const persistance = (tripObj) => {
   let tripArray = localStorage.getItem('trips') ? JSON.parse(localStorage.getItem('trips')) : []; //ternary operator: if localstorage.getitem(items) is true, then triparray will equal JSON.parse(localStorage.getItem('items'), if it's false, then triparry will be equal to []. 
-  console.log("triparray" + tripArray);
-  console.log(typeof (tripArray));
   let add = addData(tripObj);
 
   function addData(tripObj) {
@@ -28,16 +26,14 @@ export const persistance = (tripObj) => {
       console.log("trip array length: " + tripArray.length);
       document.getElementById("save-info").innerHTML = "Trip saved!";
 
+      let buttonObj = { delBtn: `${num}` }; //create a button, but not appending to dom yet. 
 
-      let buttonObj = { delBtn: `${num}` };
-
-      tripObj = { ...tripObj, ...buttonObj };
+      tripObj = { ...tripObj, ...buttonObj }; //add button and button number obj to tripobj
       tripArray.push(tripObj);
-      localStorage.setItem("trips", JSON.stringify(tripArray));
+      localStorage.setItem("trips", JSON.stringify(tripArray)); //update the localstorage to include the button obj
       console.log("Trip obj: " + JSON.stringify(tripArray));
       document.getElementById("saved-cities").innerHTML = ""; //this clears the saved-cities so that the entire city array can run again and populate with buttons without any repeat. 
       savedTrips(); 
     }
-  
   return tripArray;
 }

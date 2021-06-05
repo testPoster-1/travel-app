@@ -37,7 +37,6 @@ export const handleSubmit = (e) => {
   let name = nameValidation(userName);
   let destination = destValidation(userCity);
   
-
   if (name && interval && destination) {
     imgHolder.style.height = "30vh";
     imgHolder.scrollIntoView({
@@ -50,27 +49,21 @@ export const handleSubmit = (e) => {
     preLoader.classList.add("pre-loader");
     document.getElementById("text").innerHTML = "NOW LOADING";
 
-
-    console.log("all is true")
-    postData(userDest, interval, name, userDate, rtnDate)
-      //.then (coords => weatherbitFetch(coords));
-      .then((tripObj) => updateUI(tripObj));
+    postData(userDest, interval, name, userDate, rtnDate) //see function below 
+      .then((tripObj) => updateUI(tripObj)); //use the returned data from the post and send to updateUI function
   }
 }
 
 const postData = async (userDest, interval, userName, userDate, rtnDate) => {
-  console.log("user Date: " + userDate);
   let getData = await fetch("http://localhost:2000/fetchData", {//local server is on port 2000. See POST on server.js with fetchCoords as path
     method: "POST",
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ userDest, interval }) //Notice this was sent as an object
+    body: JSON.stringify({ userDest, interval }) //Notice this was sent as a stringified object
   });
   let dataObj = await getData.json();
-  console.log(dataObj.newWeatherEntry);
-  console.log(`This is my object I am returning: ${(dataObj)}`);
 
   let tripObj = {
     dataObj: dataObj,
@@ -78,7 +71,5 @@ const postData = async (userDest, interval, userName, userDate, rtnDate) => {
     userDate: userDate,
     rtnDate: rtnDate
   }
-  console.log(tripObj);
-
-  return (tripObj);
+  return (tripObj);  //go back to original function call to use this returned data in the .then chain
 }

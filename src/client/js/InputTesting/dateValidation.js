@@ -35,7 +35,7 @@ export const timeDifference = (userDate, rtnDate) => {
     document.getElementById("err-holder").innerHTML = "Please enter your leave and return dates."
     return false;
   }
-}
+} //go back to main.js
 
 export const vacayLength = (userDate, rtnDate) => { //calcluations time between leave and return dates
   let leaveDate = new Date(`${userDate} 00:00`); //new Date() assumes UTC time, need to add the 00:00 in the string to set user input to same time zone as "d"
