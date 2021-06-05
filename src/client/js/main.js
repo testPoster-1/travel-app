@@ -2,61 +2,55 @@ import { updateUI } from "./updateUI";
 import { timeDifference } from "./InputTesting/dateValidation";
 import { nameValidation } from "./InputTesting/nameValidation";
 import { destValidation } from "./InputTesting/destValidation";
-import {deleteTrip} from "./deleteTrip";
-
-
 
 export const handleSubmit = (e) => {
   e.preventDefault(); //prevent page from reloading on click  
-  document.getElementById("err-holder").innerHTML = "";
-  document.getElementById("delete-holder").innerHTML = "";
+
   let userDate = document.getElementById("leave-date").value;
   let rtnDate = document.getElementById("rtn-date").value;
   let userName = document.getElementById("name").value;
   let userCity = document.getElementById("city").value;
   let userState = document.getElementById("state").value;
   let userCountry = document.getElementById("country").value;
-  let userDest = (`${userCity},${userState},${userCountry}`); 
-  let outputName = document.getElementById("outputName");
-  
-  document.getElementById("save-info").innerHTML = "";
+  let userDest = (`${userCity},${userState},${userCountry}`);
+  const outputName = document.getElementById("outputName");
+  const tripInfo = document.getElementById("tripInfo");
+  const outputWeather = document.getElementById("outputWeather");
+  const imgHolder = document.querySelector("#img-holder");
 
-  // if (!document.getElementById("delete-trip").classList.contains("hidden")) {
-  //   document.getElementById("delete-trip").classList.toggle("hidden")
-  // };  //if delete button does not contain the class hidden, then add hidden class so that delete does not show up if we are not looking at saved data. See the opposite if statement in the index.js
-
-  console.log("output name: " + outputName);
-  let tripInfo = document.getElementById("tripInfo");
-  let outputWeather = document.getElementById("outputWeather");
-  document.getElementById("accordion-holder").innerHTML = "";
+  //clear any previous information that was dyanmically created to ready the page for new information
   outputName.innerHTML = "";
   tripInfo.innerHTML = "";
   outputWeather.innerHTML = "";
-  if (!document.getElementById("save-trip").classList.contains("hidden")){
+  document.getElementById("err-holder").innerHTML = "";
+  document.getElementById("delete-holder").innerHTML = "";
+  document.getElementById("save-info").innerHTML = "";
+  document.getElementById("accordion-holder").innerHTML = "";
+  imgHolder.style.backgroundImage = "";
+
+  if (!document.getElementById("save-trip").classList.contains("hidden")) { //Only shows save trip button if user clicks get weather to get weather data. 
     document.getElementById("save-trip").classList.toggle("hidden");
   }
-  
-  const imgHolder = document.querySelector("#img-holder");
-  imgHolder.style.backgroundImage = ``;
 
+  // call functions to validate user input and provide users with instructions, if needed 
   let interval = timeDifference(userDate, rtnDate);
   let name = nameValidation(userName);
-  console.log("this is an anon name: " + name);
   let destination = destValidation(userCity);
+  
 
   if (name && interval && destination) {
     imgHolder.style.height = "30vh";
     imgHolder.scrollIntoView({
       block: "center",
       behaviour: "smooth",
-      alignToTop: false, 
+      alignToTop: false,
       inline: "nearest"
     });
     let preLoader = document.getElementById("pre-loader-holder"); //play the loading animation
-  preLoader.classList.add("pre-loader");
-  document.getElementById("text").innerHTML = "NOW LOADING";
+    preLoader.classList.add("pre-loader");
+    document.getElementById("text").innerHTML = "NOW LOADING";
 
-  
+
     console.log("all is true")
     postData(userDest, interval, name, userDate, rtnDate)
       //.then (coords => weatherbitFetch(coords));
@@ -72,19 +66,19 @@ const postData = async (userDest, interval, userName, userDate, rtnDate) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({userDest, interval}) //Notice this was sent as an object
+    body: JSON.stringify({ userDest, interval }) //Notice this was sent as an object
   });
   let dataObj = await getData.json();
   console.log(dataObj.newWeatherEntry);
   console.log(`This is my object I am returning: ${(dataObj)}`);
-  
+
   let tripObj = {
-    dataObj: dataObj, 
-    userName: userName, 
-    userDate: userDate, 
+    dataObj: dataObj,
+    userName: userName,
+    userDate: userDate,
     rtnDate: rtnDate
   }
   console.log(tripObj);
-  
+
   return (tripObj);
 }

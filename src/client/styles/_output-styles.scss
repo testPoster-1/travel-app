@@ -114,13 +114,15 @@ $bounce_height: 30px;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
+.accordion:hover {
   background-color: #ccc;
-  margin-bottom: 0;
 }
 
-.active:after {
+.active {
+  margin-bottom: 0; 
+  &:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
 }
 
 .panel {

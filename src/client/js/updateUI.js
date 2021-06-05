@@ -2,7 +2,6 @@ import { vacayLength } from "./InputTesting/dateValidation";
 import { persistance } from "./localStorage";
 import { deleteTrip } from "./deleteTrip";
 
-
 export const updateUI = (tripObj) => {
   //export const updateUI = (dataObj, userDate, userName, userCity, rtnDate) => {
   //recall that the appropriate number of days has already been added to the dataobj.neweatherdata from the server
