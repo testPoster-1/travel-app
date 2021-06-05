@@ -57,9 +57,6 @@ h2 {
   margin: 5vh auto;
 }
 
-// -----------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------
-
 #container {
   display: grid;
   grid-template-columns: 70vw;
@@ -104,7 +101,6 @@ h2 {
   @media (min-width: 951px){
     height: 150vh;
   }
-  
 }
 
 #saved-div {
@@ -170,37 +166,37 @@ h2 {
     }
   }
 }
-@media (min-width: 751px) and (max-width: 1200px) {
-  font-size: 0.8em;
-  @media (min-width: 451px) and (max-width: 1250px) {
-    font-size: 1em;
-  }
-  color: $white;
-  margin: 0 10px 30px;
-  border-bottom: 1px solid $white; 
-  width: 60%; 
-  margin: 10vh auto;
-  label {
-    color: rgb(99, 97, 97);
-  }
-  input {
-    font-size: 0.9em;
-    @media (min-width: 451px) and (max-width: 750px) {
+  @media (min-width: 751px) and (max-width: 1200px) {
+    font-size: 0.8em;
+    @media (min-width: 451px) and (max-width: 1250px) {
       font-size: 1em;
     }
-  }
-  #state {
-    color: rgb(99, 97, 97);
-    margin: -4px;
-    font-family: $Niramit;
-    @media (min-width: 451px) and (max-width: 750px) {
-      font-size: 1.2em;
+    color: $white;
+    margin: 0 10px 30px;
+    border-bottom: 1px solid $white; 
+    width: 60%; 
+    margin: 10vh auto;
+    label {
+      color: rgb(99, 97, 97);
     }
-    @media (min-width: 751px) {
-      font-size: 1.2em;
+    input {
+      font-size: 0.9em;
+      @media (min-width: 451px) and (max-width: 750px) {
+        font-size: 1em;
+      }
+    }
+    #state {
+      color: rgb(99, 97, 97);
+      margin: -4px;
+      font-family: $Niramit;
+      @media (min-width: 451px) and (max-width: 750px) {
+        font-size: 1.2em;
+      }
+      @media (min-width: 751px) {
+        font-size: 1.2em;
+      }
     }
   }
-}
 }
 
 .no-focus {
@@ -215,10 +211,6 @@ h2 {
 #header {
   text-align: $centerTxt;
   color: $white;
-}
-
-#submit {
-  
 }
 
 .btn-style {
@@ -257,8 +249,3 @@ h2 {
 #delete-holder {
   margin-top: 2vh;
 }
-
-
-
-
-

@@ -4,7 +4,6 @@ $width: 15px;
 $height: 15px;
 $bounce_height: 30px;
 
-
 .pre-loader {
   position: absolute;
   #text {
@@ -47,9 +46,7 @@ $bounce_height: 30px;
       top: 0;
     }
   }
-}
-
-//kota shimura @wabeshew
+} //kota shimura @wabeshew
 
 .icon-size {
   height: 10vh;
@@ -113,7 +110,6 @@ $bounce_height: 30px;
   }
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .accordion:hover {
   background-color: #ccc;
 }
