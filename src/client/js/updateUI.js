@@ -115,6 +115,7 @@ export const updateUI = (tripObj) => {
 
   if (tripObj.delBtn) {
   let newDelBtn = document.createElement("button");
+  document.getElementById("delete-holder").innerHTML = ""; //If present, removes the previous delete button so that there is only one in view 
   newDelBtn.id = `delete${tripObj.delBtn}`
   newDelBtn.classList.add("btn-style", "del");
   newDelBtn.innerHTML = `Delete ${tripObj.dataObj.fetchedData.city} Info`;
