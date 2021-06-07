@@ -228,7 +228,7 @@ h2 {
   border: 1px solid white;
   &:hover {
     background-color: white; 
-    color: black;
+    color: black;  
   }
   &:active {
     background: linear-gradient(135deg,orange, 65%, cyan) ;
@@ -244,6 +244,10 @@ h2 {
   color: black;
   border: 1px solid black;
   margin-top: 4vh;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+  &:hover {
+    box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 
 #delete-holder {
