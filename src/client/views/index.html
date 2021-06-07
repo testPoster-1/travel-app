@@ -135,7 +135,17 @@
 
     </div> <!--End userUI div -->
   </div><!--End main container div -->
-
+  <script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      console.log("service work ran");
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+            console.log("service work ran");
+        });
+    }
+  </script>
 </body>
 
 </html>
