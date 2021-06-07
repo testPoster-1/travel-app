@@ -4,7 +4,7 @@ const cors = require("cors");
 const fetch = require("node-fetch");  //Allows us to use fetch server-side 
 
 require("dotenv").config(); //Allows us to incorporate information from the .env file -> see .env file. 
-const geoUsername = process.env.geo_username;
+const geoUsername = process.env.geo_API_KEY;
 const weatherKEY = process.env.weather_API_KEY;
 const pixabayKEY = process.env.pixabay_API_KEY;
 

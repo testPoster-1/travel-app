@@ -15,9 +15,12 @@ Enter your name, destination city/state/country, departure and return dates. The
 - Create a `.env` file in the root directory 
 - Copy the following lines of code into the `.env` file and input your API keys where prompted
 
-    geo_username = your key here
-    weather_API_KEY = your key here
-    pixabay_API_KEY = your key here
+<pre>
+geo_API_KEY = Your geoNames api key here
+weather_API_KEY = Your weatherBit api key here
+pixabay_API_KEY = Your pixabay api key here
+</pre>
+
 
 ## To start production mode  
     npm run prod
