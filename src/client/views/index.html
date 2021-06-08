@@ -18,21 +18,19 @@
         </header>
         <div class="user-input">
           <label for="name">Please enter your name:</label>
-          <input class="no-focus" type="text" id="name">
-          <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
+          <input class="no-focus" type="text" id="name" value="monkey">
         </div>
         <div class="user-input">
           <label for="city">Please enter a destination city:</label>
-          <input class="no-focus" type="text" name="location" id="city" value="awefoija weofij woij">
-          <!--***REMOVE THIS VALUE WHEN DONE TEST!!!!!-->
+          <input class="no-focus" type="text" name="location" id="city">
         </div>
         <div class="user-input">
           <label for="leave-date">Please enter date you are leaving:</label>
-          <input class="no-focus" type="date" name="leave-date" id="leave-date" value="2021-06-28">
+          <input class="no-focus" type="date" name="leave-date" id="leave-date">
         </div>
         <div class="user-input">
           <label for="rtn-date">Please enter date you are returning:</label>
-          <input class="no-focus" type="date" name="rtn-date" id="rtn-date" value="2021-06-29">
+          <input class="no-focus" type="date" name="rtn-date" id="rtn-date">
         </div>
         <div class="user-input">
           <label for="state"></label>
@@ -111,7 +109,7 @@
           <p id="save-text"></p>
         </div>
       </div>
-      <div id="img-holder">
+      <div id="img-holder"> <!--Holds the image and the messages to user-->
         <h4 id="err-holder"></h4>
         <div id="pre-loader-holder">
           <div class="loading">
@@ -121,7 +119,7 @@
         </div>
       </div>
 
-      <div id="output">
+      <div id="output"> <!--Holds the weather info-->
         <div id="result-holder">
           <h2 id="outputName" class="center-text"></h2>
           <h4 id="tripInfo" class="center-text"></h4>
@@ -135,6 +133,7 @@
 
     </div> <!--End userUI div -->
   </div><!--End main container div -->
+
   <script>
     // Check that service workers are supported
     if ('serviceWorker' in navigator) {
@@ -146,6 +145,7 @@
         });
     }
   </script>
+
 </body>
 
 </html>

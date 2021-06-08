@@ -34,8 +34,8 @@ export const updateUI = (tripObj) => {
     for (let item in tripObj.dataObj.newWeatherEntry) {
 
       //--------------dynamically create images from images within a folder----------------------
-      let myImg = require.context("../images/icons"); //require.context and then add in the folder that contains the images
-      let weatherIcon = myImg(`./${tripObj.dataObj.newWeatherEntry[item].icon}.png`).default; //note the .default
+      let myImg = require.context("../images/icons"); //require.context and then add in the folder that contains the images. Need to do this when you are using mult images in a file
+      let weatherIcon = myImg(`./${tripObj.dataObj.newWeatherEntry[item].icon}.png`).default; //note the .default when you are using the images in require.context
       let newImg = document.createElement("img");
       newImg.src = weatherIcon;
       newImg.classList.add("icon-size");
