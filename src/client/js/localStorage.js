@@ -34,7 +34,7 @@ export const persistance = (tripObj) => {
       tripArray.push(tripObj);
       localStorage.setItem("trips", JSON.stringify(tripArray)); //update the localstorage to include the button obj
       console.log("Trip obj: " + JSON.stringify(tripArray));
-      document.getElementById("saved-cities").innerHTML = ""; //this clears the saved-cities so that the entire city array can run again and populate with buttons without any repeat. 
+      document.getElementById("saved-cities").innerHTML = "hello"; //this clears the saved-cities so that the entire city array can run again and populate with buttons without any repeat. 
       savedTrips(); //creates the buttons for the saved trips
     }
   return tripArray;
