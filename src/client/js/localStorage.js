@@ -12,6 +12,8 @@ export const persistance = (tripObj) => {
       if (arraycity == tripObj.dataObj.fetchedData.city) {
         console.log("I'm there");
         return true;
+      } else {
+        return false; 
       }
     }
   }
@@ -33,7 +35,7 @@ export const persistance = (tripObj) => {
       localStorage.setItem("trips", JSON.stringify(tripArray)); //update the localstorage to include the button obj
       console.log("Trip obj: " + JSON.stringify(tripArray));
       document.getElementById("saved-cities").innerHTML = ""; //this clears the saved-cities so that the entire city array can run again and populate with buttons without any repeat. 
-      savedTrips(); 
+      savedTrips(); //creates the buttons for the saved trips
     }
   return tripArray;
 }

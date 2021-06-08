@@ -69,7 +69,7 @@ export const updateUI = (tripObj) => {
 
           let weatherNode;
 
-          if (element == "Snow" || element == "Rain") {
+          if (element == "Snow" || element == "Rain") { //adds the correct units to the weather info
             weatherNode = document.createTextNode(`: ${weatherElem} mm`);
           } else if (element == "Temp") {
             weatherNode = document.createTextNode(`: ${weatherElem} F`);

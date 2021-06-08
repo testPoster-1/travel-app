@@ -55,7 +55,7 @@ export const handleSubmit = (e) => {
 }
 
 const postData = async (userDest, interval, userName, userDate, rtnDate) => {
-  let getData = await fetch("http://localhost:2000/fetchData", {//local server is on port 2000. See POST on server.js with fetchCoords as path
+  let getData = await fetch("http://localhost:2000/fetchData", {//local server is on port 2000 and the dev server is on 1000, so we have to use the absolute path. If they were on the same port, can use the relative path of "/fetchData". See POST on server.js with fetchCoords as path
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -63,9 +63,9 @@ const postData = async (userDest, interval, userName, userDate, rtnDate) => {
     },
     body: JSON.stringify({ userDest, interval }) //Notice this was sent as a stringified object
   });
-  let dataObj = await getData.json();
+  let dataObj = await getData.json(); //gets the information that was from the POST method
   let tripObj = {};
-  if (dataObj.fetchedData.city == "noCity") {
+  if (dataObj.fetchedData.city == "noCity") {//if the destination city was undefined, it will return "noCity", which will go to the updateUI and the undefined trip fxn
     console.log("All location input was undefined");
     tripObj = {
       dataObj: dataObj

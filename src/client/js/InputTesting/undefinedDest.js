@@ -1,4 +1,4 @@
-export const undefinedDest = () => {
+export const undefinedDest = () => { //will be called when the input from the user destination returns absolutely no information from GeoNames. For example, they put in "zzzzzzzzz" as their destination. 
 
   const imgHolder = document.querySelector("#img-holder");
   const tripInfo = document.getElementById("tripInfo");
@@ -15,4 +15,4 @@ export const undefinedDest = () => {
   document.getElementById("pre-loader-holder").classList.remove("pre-loader");
   imgHolder.style.backgroundImage = `url(https://cdn.pixabay.com/photo/2015/08/05/15/04/mistake-876597_1280.jpg)`;
   tripInfo.innerHTML = `Oops! The destination you entered was not recognized. Please check spelling and try again.`;
-}
+} 
