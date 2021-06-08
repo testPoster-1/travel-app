@@ -10,6 +10,23 @@ Enter your name, destination city/state/country, departure and return dates. The
 - Weatherbit
 - Pixabay
 
+## Dependencies
+- Cors 2.8.5
+- Dotenv 9.0.2
+- Express 4.17.1
+- Node-Fetch 2.6.1
+- Node-Sass 6.0.0
+- Webpack-cli 4.7.0
+
+## Extras 
+- Add end date and display length of trip.
+- Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities). 
+- Allow the user to remove the trip.
+- Use Local Storage to save the data. 
+- Pull the forecast for multiple days.
+- Incorporate icons into forecast. 
+- Allow the user to add additional trips. 
+
 ## Instructions to run app 
 - Obtain API keys from the above sites 
 - Create a `.env` file in the root directory 

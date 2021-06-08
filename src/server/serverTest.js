@@ -5,4 +5,4 @@ const app = express();
 app.get("/", function (req, res) {
   res.status(200).send("Test has passed!");
 });
-module.exports = app; //export app, see serverTest.spec.js
+module.exports = app; //export the app, see serverTest.spec.js
