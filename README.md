@@ -38,6 +38,13 @@ weather_API_KEY = Your weatherBit api key here
 pixabay_API_KEY = Your pixabay api key here
 </pre>
 
+## Troubleshooting
+Service workers will sometimes cache previous versions of the page, including your input values. If data or user input values do not change, please clear the service worker cache by performing the following steps: 
+- Open the browser's developer tools panel
+- Go to the Application panel 
+- Click "Cache Storage" to expand 
+- Find the cached information and delete 
+- Refresh the browser
 
 ## To start production mode  
     npm run prod
